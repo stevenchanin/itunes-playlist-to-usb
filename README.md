@@ -16,9 +16,9 @@ To use the playlist_exporter (this script), you:
 
 * export the playlist as XML
 
-![Initiate Export](itunes-playlist-to-usb/tree/master/doc/images/iTunes_export.png)
+![Initiate Export](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export.png)
 
-![Save Export as XML file](itunes-playlist-to-usb/tree/master/doc/images/iTunes_export_save.png)
+![Save Export as XML file](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export_save.png)
 
 * run playlist_exporter
 
@@ -26,7 +26,7 @@ To use the playlist_exporter (this script), you:
 ruby playlist_exporter.rb process
 ~~~~
 
-![Run in Terminal](itunes-playlist-to-usb/tree/master/doc/images/terminal.png)
+![Run in Terminal](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/terminal.png)
 
 and it will copy all the songs from the playlist onto the USB stick organized in a hierarchy of Genre and Album using the iTunes meta data.  It will generate new file names that are
 
@@ -34,3 +34,4 @@ and it will copy all the songs from the playlist onto the USB stick organized in
 	<track number>-<song name from iTunes>
     #==> 9-Rock of Ages.mp3
 ~~~~
+![boo](iTunes_export.png)
