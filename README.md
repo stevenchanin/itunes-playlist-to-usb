@@ -1,8 +1,6 @@
-ITunes Playlist To USB
-======================
+# ITunes Playlist To USB
 
-The Problem
------------
+## The Problem
 Lots of cars now have USB interfaces to allow you to bring music with you. Those are great because you can buy a USB stick for much lower $/GB than by getting the storage space as part of an iPod.
 
 But I ran into a problem getting music copied over from my iTunes library onto the USB stick in a way that I could use it.
@@ -11,8 +9,7 @@ The first problem was that with a lot of music, I find it helpful to organize it
 
 The second problem I ran into was that what ends up in that folder is a copy of the file where the name is whatever the underlying filename was originally created as, but that often includes all kinds of other information (junk) depending on what software was used to rip the song.
 
-Usage
------
+## Usage
 To use the playlist_exporter (this script), you:
 * create a playlist(s) containing the songs / albums you want in iTunes
 * export the playlist as XML
