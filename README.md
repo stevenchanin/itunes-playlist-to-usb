@@ -35,3 +35,6 @@ and it will copy all the songs from the playlist onto the USB stick organized in
 	<track number>-<song name from iTunes>
     #==> 9-Rock of Ages.mp3
 ~~~~
+
+so you end up with a final result like:
+![Final Result](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/final_result.png)
