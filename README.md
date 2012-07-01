@@ -1,7 +1,7 @@
 # ITunes Playlist To USB
 
 ## The Problem
-Lots of cars now have USB interfaces to allow you to bring music with you. Those are great because you can buy a USB stick for much lower $/GB than by getting the storage space as part of an iPod.
+Lots of cars now have USB interfaces to allow you to bring music with you. Those are great because you can buy a USB stick for much lower $/GB ($6 for 16gb = $0.37/gb) than by getting the storage space as part of an iPod ($139.99 for 16gb = $8.75/gb).
 
 But I ran into a problem getting music copied over from my iTunes library onto the USB stick in a way that I could use it.
 
