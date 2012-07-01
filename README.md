@@ -23,6 +23,7 @@ To use the playlist_exporter (this script), you:
 * run playlist_exporter
 
 ~~~~
+bundle install
 ruby playlist_exporter.rb process
 ~~~~
 
@@ -34,4 +35,3 @@ and it will copy all the songs from the playlist onto the USB stick organized in
 	<track number>-<song name from iTunes>
     #==> 9-Rock of Ages.mp3
 ~~~~
-![boo](iTunes_export.png)
