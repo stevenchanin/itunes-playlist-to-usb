@@ -77,7 +77,7 @@ class PlaylistExporter < Thor
     track_number = info["Track Number"]
     file_uri = URI(info["Location"])
 
-    original_file = file_uri.path.gsub('%20', ' ')
+    original_file = URI.decode(file_uri.path)
     original_file =~ /.*\.(.*)/
     file_type = $1
 
