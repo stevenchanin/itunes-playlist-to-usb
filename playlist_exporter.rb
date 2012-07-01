@@ -71,9 +71,9 @@ class PlaylistExporter < Thor
   end
 
   def add_track_to_catalog(info)
-    name = info["Name"][0,20]
-    album = info["Album"][0,20]
-    genre = info["Genre"][0,20]
+    name = clean_string(info["Name"])
+    album = clean_string(info["Album"][0,25])
+    genre = clean_string(info["Genre"][0,20])
     track_number = info["Track Number"]
     file_uri = URI(info["Location"])
 
@@ -84,6 +84,10 @@ class PlaylistExporter < Thor
     @catalog[genre] ||= {}
     @catalog[genre][album] ||= []
     @catalog[genre][album] << {:name => "#{track_number}-#{name}.#{file_type}", :file => original_file}
+  end
+
+  def clean_string(s)
+    s.gsub(/\/|\(|\)/, '_')
   end
 
   def copy_catalog
