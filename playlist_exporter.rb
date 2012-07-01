@@ -7,7 +7,14 @@ require 'fileutils'
 
 class PlaylistExporter < Thor
   desc "process", "process playlist"
+  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v",
+:desc => "running in verbose mode will also show each file as it's copied"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d",
+:desc => "in debug mode files will not actually be copied"
   def process
+    puts "*** Verbose Mode" if options.verbose?
+    puts "*** Debug Mode" if options.debug?
+
     get_exported_file
     get_target_directory
 
@@ -94,22 +101,32 @@ class PlaylistExporter < Thor
     @catalog.each do |genre, albums|
       puts "Genre: #{genre}"
       genre_path = "#{@target_directory}/#{genre}"
-      FileUtils.mkdir(genre_path) unless File.exists?(genre_path)
+
+      unless options.debug?
+        FileUtils.mkdir(genre_path) unless File.exists?(genre_path)
+      end
 
       albums.each do |album, tracks|
         puts "  Album: #{album}"
         album_path = "#{@target_directory}/#{genre}/#{album}"
-        FileUtils.mkdir(album_path) unless File.exists?(album_path)
+
+        unless options.debug?
+          FileUtils.mkdir(album_path) unless File.exists?(album_path)
+        end
 
         tracks.each do |track|
           full_destination = "#{@target_directory}/#{genre}/#{album}/#{track[:name]}"
           source = track[:file]
 
-          puts "    Creating   : #{track[:name]}"
-          puts "       source  : #{track[:file]}"
+          if options.verbose?
+            puts "    Creating   : #{track[:name]}"
+            puts "       source  : #{track[:file]}"
+          end
 
           if File.exists?(source)
-            FileUtils.copy_file(source, full_destination)
+            unless options.debug?
+              FileUtils.copy_file(source, full_destination)
+            end
           else
             puts "    *** Source does not exist"
           end
