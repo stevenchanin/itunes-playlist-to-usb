@@ -90,7 +90,9 @@ class PlaylistExporter < Thor
 
     @catalog[genre] ||= {}
     @catalog[genre][album] ||= []
-    @catalog[genre][album] << {:name => "#{track_number}-#{name}.#{file_type}", :file => original_file}
+
+    target_name = "%02d-#{name}.#{file_type}" % track_number
+    @catalog[genre][album] << {:name => target_name, :file => original_file}
   end
 
   def clean_string(s)
