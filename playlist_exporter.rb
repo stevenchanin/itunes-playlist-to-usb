@@ -91,6 +91,9 @@ class PlaylistExporter < Thor
     @catalog[genre] ||= {}
     @catalog[genre][album] ||= []
 
+    if options.verbose?
+      puts "    Cataloging   : #{name} / #{album} / #{genre} / #{track_number}"
+    end
     target_name = "%02d-#{name}.#{file_type}" % track_number
     @catalog[genre][album] << {:name => target_name, :file => original_file}
   end
