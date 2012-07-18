@@ -38,3 +38,20 @@ and it will copy all the songs from the playlist onto the USB stick organized in
 
 so you end up with a final result like:
 ![Final Result](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/final_result.png)
+
+### Options
+if you ask for help from playlist_exporter, it will show you the options it accepts:
+
+~~~~
+ruby playlist_exporter.rb help process 
+
+Usage:
+  playlist_exporter.rb process
+
+Options:
+  -v, [--verbose]  # running in verbose mode will also show each file as it's copied
+  -d, [--debug]    # in debug mode files will not actually be copied
+  -f, [--force]    # normally, copying a file is skipped if a file with the same name and size already exists in the destination. Force mode always copies.
+
+process playlist
+~~~~

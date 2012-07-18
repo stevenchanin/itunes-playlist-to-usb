@@ -11,9 +11,13 @@ class PlaylistExporter < Thor
 :desc => "running in verbose mode will also show each file as it's copied"
   method_option :debug, :type => :boolean, :default => false, :aliases => "-d",
 :desc => "in debug mode files will not actually be copied"
+  method_option :force, :type => :boolean, :default => false, :aliases => "-f",
+:desc => "normally, copying a file is skipped if a file with the same name and size already exists in the destination. Force mode always copies."
+
   def process
     puts "*** Verbose Mode" if options.verbose?
     puts "*** Debug Mode" if options.debug?
+    puts "*** Force Mode" if options.force?
 
     get_exported_file
     get_target_directory
@@ -137,14 +141,26 @@ class PlaylistExporter < Thor
           end
 
           if File.exists?(source)
-            unless options.debug?
-              FileUtils.copy_file(source, full_destination)
+            if options.force?
+              copy_file(source, full_destination)
+            else
+              if File.exists?(full_destination) && (File.size(source) == File.size(full_destination))
+                puts "       *** Destination file already exists"
+              else
+                copy_file(source, full_destination)
+              end
             end
           else
-            puts "    *** Source does not exist"
+            puts "       *** Source does not exist"
           end
         end
       end
+    end
+  end
+
+  def copy_file(source, full_destination)
+    unless options.debug?
+      FileUtils.copy_file(source, full_destination)
     end
   end
 end
