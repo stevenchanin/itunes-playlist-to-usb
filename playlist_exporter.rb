@@ -116,6 +116,7 @@ class PlaylistExporter < Thor
   end
 
   def copy_catalog
+    say "Beginning Copy", :green
     @catalog.each do |genre, albums|
       puts "Genre: #{genre}"
       genre_path = "#{@target_directory}/#{genre}"
