@@ -87,20 +87,25 @@ class PlaylistExporter < Thor
     album = clean_string(info["Album"], 25)
     genre = clean_string(info["Genre"], 20)
     track_number = info["Track Number"] || 0
-    file_uri = URI(info["Location"])
 
-    original_file = URI.decode(file_uri.path)
-    original_file =~ /.*\.(.*)/
-    file_type = $1
+    begin
+      file_uri = URI(info["Location"])
 
-    @catalog[genre] ||= {}
-    @catalog[genre][album] ||= []
+      original_file = URI.decode(file_uri.path)
+      original_file =~ /.*\.(.*)/
+      file_type = $1
 
-    if options.verbose?
-      puts "    Cataloging   : #{name} / #{album} / #{genre} / #{track_number}"
+      @catalog[genre] ||= {}
+      @catalog[genre][album] ||= []
+
+      if options.verbose?
+        puts "    Cataloging   : #{name} / #{album} / #{genre} / #{track_number}"
+      end
+      target_name = "%02d-#{name}.#{file_type}" % track_number
+      @catalog[genre][album] << {:name => target_name, :file => original_file}
+    rescue
+      puts "** Error trying to process:\n\t#{name}: #{info}"
     end
-    target_name = "%02d-#{name}.#{file_type}" % track_number
-    @catalog[genre][album] << {:name => target_name, :file => original_file}
   end
 
   def clean_string(s, cutoff_at = nil)
