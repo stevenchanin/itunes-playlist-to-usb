@@ -101,7 +101,7 @@ class PlaylistExporter < Thor
       if options.verbose?
         puts "    Cataloging   : #{name} / #{album} / #{genre} / #{track_number}"
       end
-      target_name = "%02d-#{name}.#{file_type}" % track_number
+      target_name = ("%02d-"  % track_number) + "#{name}.#{file_type}"
       @catalog[genre][album] << {:name => target_name, :file => original_file}
     rescue
       puts "** Error trying to process:\n\t#{name}: #{info}"
