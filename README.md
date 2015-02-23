@@ -12,21 +12,35 @@ The second problem I ran into was that what ends up in that folder is a copy of 
 ## Usage
 To use the playlist_exporter (this script), you:
 
-* create a playlist(s) containing the songs / albums you want in iTunes
+### create a playlist(s) containing the songs / albums you want in iTunes
 
-* export the playlist as XML
+### export the playlist as XML
 
 ![Select Playlist](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export1.png)
 ![Initiate Export](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export2.png)
 
 ![Save Export as XML file](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export_save.png)
 
-* run playlist_exporter
+### run playlist_exporter
+I tend to run ruby under RVM (https://rvm.io/) which installs bundler by default. If you don't have bundler installed, you will need to install it first
+
+~~~~
+$ gem install bundler
+NOTE: you may need sudo to sudo the preceding command, depending on your installation directory and permissions
+~~~~
+
+once you've got bundler installed, then
 
 ~~~~
 bundle install
 ruby playlist_exporter.rb process
 ~~~~
+
+the playlist_exporter will prompt you for where it should find:
+
+
+* the XML file you exported your playlist to, and
+* where it should write the music files to (this should be the path to your USB drive, or to a temp directory you will manually copy over)
 
 ![Run in Terminal](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/terminal.png)
 
