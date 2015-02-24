@@ -152,7 +152,7 @@ class PlaylistExporter < Thor
               copy_file(source, full_destination)
             else
               if File.exists?(full_destination) && (File.size(source) == File.size(full_destination))
-                puts "       *** Destination file already exists"
+                puts "       *** Destination file already exists: #{track[:name]}"
               else
                 copy_file(source, full_destination)
               end
