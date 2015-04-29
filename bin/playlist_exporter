@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'thor'
+require 'plist'
+require 'uri'
+require 'fileutils'
+
+require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
+
+PlaylistExporter.start

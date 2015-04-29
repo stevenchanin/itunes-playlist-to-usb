@@ -1,11 +1,3 @@
-#!/usr/bin/env ruby
-
-require 'rubygems'
-require 'thor'
-require 'plist'
-require 'uri'
-require 'fileutils'
-
 class PlaylistExporter < Thor
   desc "process", "process playlist"
   method_option :verbose, :type => :boolean, :default => false, :aliases => "-v",
@@ -171,5 +163,3 @@ class PlaylistExporter < Thor
     end
   end
 end
-
-PlaylistExporter.start
