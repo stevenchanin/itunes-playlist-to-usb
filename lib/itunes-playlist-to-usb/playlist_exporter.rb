@@ -160,6 +160,7 @@ class PlaylistExporter < Thor
   def copy_file(source, full_destination)
     unless options.debug?
       FileUtils.copy_file(source, full_destination)
+      Convert.new(full_destination).run
     end
   end
 end

@@ -5,7 +5,18 @@ require 'thor'
 require 'plist'
 require 'uri'
 require 'fileutils'
+require 'yaml'
 
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
+
+settings_paths = [
+  File.expand_path("~/.itunes-playlist-to-usb"),
+  File.join(File.dirname(__FILE__), "../etc/settings.yml")
+]
+
+settings_paths.each do |s|
+  SETTINGS = YAML.load_file(s) if File.exist?(s)
+end
+CODEC = YAML.load_file(File.join(File.dirname(__FILE__), "../etc/codecs.yml"))[SETTINGS["output"]["codec"]]
 
 PlaylistExporter.start
