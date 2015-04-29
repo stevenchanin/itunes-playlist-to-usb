@@ -4,3 +4,4 @@ gem 'thor'
 gem "plist"
 gem 'byebug'
 gem 'ruby-audioinfo'
+gem 'rspec'
