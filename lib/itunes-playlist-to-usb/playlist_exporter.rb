@@ -25,12 +25,13 @@ class PlaylistExporter < Thor
 
   private
   def get_exported_file
-    found = false
+    @exported_file = SETTINGS["playlist"]
+    found = !SETTINGS["playlist"].nil? && File.exist?(SETTINGS["playlist"])
 
     until found
       @exported_file = ask("Location of Playlist [~/Desktop/usb/playlist.xml]")
       @exported_file = "~/Desktop/usb/playlist.xml" if @exported_file == ""
-      @exported_file = File.expand_path(@exported_file) 
+      @exported_file = File.expand_path(@exported_file)
 
       if File.exists?(@exported_file)
         found = true
@@ -41,14 +42,15 @@ class PlaylistExporter < Thor
   end
 
   def get_target_directory
-    found = false
+    @target_directory = SETTINGS["output"]["directory"]
+    found = !@target_directory.nil? && File.exist?(SETTINGS["playlist"])
 
     until found
       @target_directory = ask("Location to which music should be copied [~/Desktop/usb]")
       @target_directory = "~/Desktop/usb/" if @target_directory == ""
       @target_directory += "/" unless ("/" == @target_directory[-1])
 
-      @target_directory = File.expand_path(@target_directory) 
+      @target_directory = File.expand_path(@target_directory)
 
       if File.exists?(@target_directory)
         found = true
