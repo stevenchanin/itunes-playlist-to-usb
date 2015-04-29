@@ -1,0 +1,4 @@
+mp3:
+  codec: libmp3lame
+  extension: mp3
+  magic: application/octet-stream
