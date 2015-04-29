@@ -30,7 +30,7 @@ class Convert
   end
 
   def output_codec
-    @codecs[SETTINGS["output"]["codec"]]
+    @codecs[SETTINGS["output"]["codec"]]["codec"]
   end
 
   def convert?
