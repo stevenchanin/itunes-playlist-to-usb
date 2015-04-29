@@ -8,6 +8,7 @@ require 'rubygems'
 require 'thor'
 require 'uri'
 require 'yaml'
+require 'shellwords'
 
 require 'playlist_exporter'
 require 'convert'

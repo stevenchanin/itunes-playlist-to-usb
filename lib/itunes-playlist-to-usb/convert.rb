@@ -13,7 +13,7 @@ class Convert
 
   def run
     return false unless convert?
-    system("ffmpeg -i '#{file_in}' -codec:v copy -codec:a #{output_codec} -q:a 2 '#{file_out}'")
+    system("ffmpeg -i #{Shellwords.escape(file_in)} -codec:v copy -codec:a #{output_codec} -q:a 2 #{Shellwords.escape(file_out)}")
     File.unlink(file_in)
   end
 
