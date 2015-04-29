@@ -8,19 +8,17 @@ class Convert
     @meta = AudioInfo.open(file)
 
     @file_in = file
-    @file_out = file.gsub(/[^\.]+$/, @codecs[encoding]["extension"])
+    @file_out = file.gsub(/[^\.]+$/, @codecs[SETTINGS["output"]["encoding"]]["extension"])
   end
 
   def run
-    return true unless lossless
-    return true if File.exist?(file_out)
+    return false unless convert?
     system("ffmpeg -i '#{file_in}' -codec:v copy -codec:a #{output_codec} -q:a 2 '#{file_out}'")
     File.unlink(file_in)
   end
 
-  private
   def encoding
-    if @meta.info.extension == "mp3"
+    if @meta.extension == "mp3"
       "mp3"
     else
       @meta.info.instance_variable_get(:@info_atoms)["ENCODING"]
@@ -35,4 +33,9 @@ class Convert
     @codecs[SETTINGS["output"]["codec"]]
   end
 
+  def convert?
+    return false unless lossless
+    return false if File.exist?(file_out)
+    true
+  end
 end

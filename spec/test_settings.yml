@@ -1,0 +1,5 @@
+playlist: /tmp/x.xml
+output:
+  codec: mp3
+  encoding: mp3
+  directory: /tmp/
