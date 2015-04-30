@@ -10,6 +10,10 @@ RSpec.describe Convert do
       expect(mp3.output_codec).to eql "libmp3lame"
     end
 
+    it "should save to the correct directory" do
+      expect(mp3.output_file).to eql "/tmp/test1.mp3"
+    end
+
     it "is encoded as mp3" do
       expect(mp3.encoding).to eq "mp3"
     end
@@ -19,7 +23,7 @@ RSpec.describe Convert do
     end
 
     it "it has correct output file" do
-      expect(File.basename(mp3.file_out)).to eql "test1.mp3"
+      expect(File.basename(mp3.output_file)).to eql "test1.mp3"
     end
 
     it "it should not be converted" do
@@ -39,7 +43,7 @@ RSpec.describe Convert do
     end
 
     it "it has correct output file" do
-      expect(File.basename(alac.file_out)).to eql "test2.mp3"
+      expect(File.basename(alac.output_file)).to eql "test2.mp3"
     end
 
     it "it should be converted" do
