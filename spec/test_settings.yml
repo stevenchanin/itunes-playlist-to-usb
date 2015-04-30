@@ -1,4 +1,4 @@
-playlist: /tmp/x.xml
+playlist: /tmp/playlist.xml
 output:
   codec: mp3
   encoding: mp3

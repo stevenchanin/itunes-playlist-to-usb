@@ -12,3 +12,4 @@ require 'shellwords'
 
 require 'playlist_exporter'
 require 'convert'
+require 'playlist_manager'

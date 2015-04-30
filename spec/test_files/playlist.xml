@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Major Version</key><integer>1</integer>
+	<key>Minor Version</key><integer>1</integer>
+	<key>Date</key><date>2015-04-30T05:41:43Z</date>
+	<key>Application Version</key><string>12.1.2.27</string>
+	<key>Features</key><integer>5</integer>
+	<key>Show Content Ratings</key><true/>
+	<key>Music Folder</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/</string>
+	<key>Library Persistent ID</key><string>FBBAB18EE297CCF2</string>
+	<key>Tracks</key>
+	<dict>
+		<key>2261</key>
+		<dict>
+			<key>Track ID</key><integer>2261</integer>
+			<key>Name</key><string>Skin &#38; Bones Blues</string>
+			<key>Artist</key><string>Honeyboy Edwards</string>
+			<key>Album</key><string>Crawling Kingsnake</string>
+			<key>Genre</key><string>Blues</string>
+			<key>Kind</key><string>MPEG audio file</string>
+			<key>Size</key><integer>6608553</integer>
+			<key>Total Time</key><integer>153887</integer>
+			<key>Track Number</key><integer>7</integer>
+			<key>Year</key><integer>1964</integer>
+			<key>Date Modified</key><date>2013-08-25T16:46:52Z</date>
+			<key>Date Added</key><date>2013-01-19T12:20:48Z</date>
+			<key>Bit Rate</key><integer>320</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3490444729</integer>
+			<key>Play Date UTC</key><date>2014-08-09T05:58:49Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2014-12-17T07:23:52Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>31E962ED2DB7032B</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Honeyboy%20Edwards/Crawling%20Kingsnake/07%20Skin%20&#38;%20Bones%20Blues.mp3</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>14605</key>
+		<dict>
+			<key>Track ID</key><integer>14605</integer>
+			<key>Name</key><string>Endangered Species (Tales From The Darkside)</string>
+			<key>Artist</key><string>Ice Cube Feat. Chuck D</string>
+			<key>Album Artist</key><string>Ice Cube</string>
+			<key>Composer</key><string>Eric Sadler/Ice Cube</string>
+			<key>Album</key><string>AmeriKKKa's Most Wanted</string>
+			<key>Genre</key><string>Hip Hop</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>23903438</integer>
+			<key>Total Time</key><integer>201533</integer>
+			<key>Track Number</key><integer>8</integer>
+			<key>Track Count</key><integer>16</integer>
+			<key>Year</key><integer>1990</integer>
+			<key>Date Modified</key><date>2015-02-09T23:44:34Z</date>
+			<key>Date Added</key><date>2013-01-26T13:04:15Z</date>
+			<key>Bit Rate</key><integer>928</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3487848698</integer>
+			<key>Play Date UTC</key><date>2014-07-10T04:51:38Z</date>
+			<key>Rating</key><integer>100</integer>
+			<key>Rating Computed</key><true/>
+			<key>Album Rating</key><integer>100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>9B72F8B2DE4648AB</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Ice%20Cube/AmeriKKKa's%20Most%20Wanted/08%20Endangered%20Species%20(Tales%20From%20The%20Darkside).m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19937</key>
+		<dict>
+			<key>Track ID</key><integer>19937</integer>
+			<key>Name</key><string>Smells Like Teen Spirit</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>37632353</integer>
+			<key>Total Time</key><integer>302160</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:11Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:08Z</date>
+			<key>Bit Rate</key><integer>964</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>3BFD459A86C75BE1</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/01%20Smells%20Like%20Teen%20Spirit.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19939</key>
+		<dict>
+			<key>Track ID</key><integer>19939</integer>
+			<key>Name</key><string>In Bloom</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>33440819</integer>
+			<key>Total Time</key><integer>255133</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:13Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:08Z</date>
+			<key>Bit Rate</key><integer>1010</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>05C5AEA5ED61D836</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/02%20In%20Bloom.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19941</key>
+		<dict>
+			<key>Track ID</key><integer>19941</integer>
+			<key>Name</key><string>Come As You Are</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>26334897</integer>
+			<key>Total Time</key><integer>219106</integer>
+			<key>Track Number</key><integer>3</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:14Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:08Z</date>
+			<key>Bit Rate</key><integer>917</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>4AF9F5E4A581DD31</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/03%20Come%20As%20You%20Are.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19943</key>
+		<dict>
+			<key>Track ID</key><integer>19943</integer>
+			<key>Name</key><string>Breed</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>23828822</integer>
+			<key>Total Time</key><integer>184093</integer>
+			<key>Track Number</key><integer>4</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:15Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:08Z</date>
+			<key>Bit Rate</key><integer>983</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>15E7071B3186D07D</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/04%20Breed.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19945</key>
+		<dict>
+			<key>Track ID</key><integer>19945</integer>
+			<key>Name</key><string>Lithium</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>30650429</integer>
+			<key>Total Time</key><integer>257306</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:16Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>915</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>401DBEB4149D616B</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/05%20Lithium.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19947</key>
+		<dict>
+			<key>Track ID</key><integer>19947</integer>
+			<key>Name</key><string>Polly</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>15940042</integer>
+			<key>Total Time</key><integer>175866</integer>
+			<key>Track Number</key><integer>6</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:16Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>670</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>C3C443AFB3E00630</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/06%20Polly.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19949</key>
+		<dict>
+			<key>Track ID</key><integer>19949</integer>
+			<key>Name</key><string>Territorial Pissings</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>19092010</integer>
+			<key>Total Time</key><integer>143066</integer>
+			<key>Track Number</key><integer>7</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:17Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>1000</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>183B5258E01DF448</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/07%20Territorial%20Pissings.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19951</key>
+		<dict>
+			<key>Track ID</key><integer>19951</integer>
+			<key>Name</key><string>Drain You</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>28187746</integer>
+			<key>Total Time</key><integer>224066</integer>
+			<key>Track Number</key><integer>8</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:19Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>963</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>5B122009B4E063FE</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/08%20Drain%20You.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19953</key>
+		<dict>
+			<key>Track ID</key><integer>19953</integer>
+			<key>Name</key><string>Lounge Act</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>19620643</integer>
+			<key>Total Time</key><integer>157066</integer>
+			<key>Track Number</key><integer>9</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:19Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>938</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>BC70AC1186A9FFC6</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/09%20Lounge%20Act.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19955</key>
+		<dict>
+			<key>Track ID</key><integer>19955</integer>
+			<key>Name</key><string>Stay Away</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>25981263</integer>
+			<key>Total Time</key><integer>212693</integer>
+			<key>Track Number</key><integer>10</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:20Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>932</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>5F33383B0712067A</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/10%20Stay%20Away.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19957</key>
+		<dict>
+			<key>Track ID</key><integer>19957</integer>
+			<key>Name</key><string>On A Plain</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>25088474</integer>
+			<key>Total Time</key><integer>196600</integer>
+			<key>Track Number</key><integer>11</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:21Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>972</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>53F8AE9B0CDA137B</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/11%20On%20A%20Plain.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>19959</key>
+		<dict>
+			<key>Track ID</key><integer>19959</integer>
+			<key>Name</key><string>Something In The Way</string>
+			<key>Artist</key><string>Nirvana</string>
+			<key>Album</key><string>Nevermind</string>
+			<key>Genre</key><string>Grunge</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>67245434</integer>
+			<key>Total Time</key><integer>1235600</integer>
+			<key>Track Number</key><integer>12</integer>
+			<key>Track Count</key><integer>12</integer>
+			<key>Year</key><integer>1991</integer>
+			<key>Date Modified</key><date>2013-08-25T17:58:23Z</date>
+			<key>Date Added</key><date>2013-02-24T10:21:09Z</date>
+			<key>Bit Rate</key><integer>426</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Persistent ID</key><string>ED4DE15AA4DF7BA2</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/12%20Something%20In%20The%20Way.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>24673</key>
+		<dict>
+			<key>Track ID</key><integer>24673</integer>
+			<key>Name</key><string>Lies are Much More Fun</string>
+			<key>Artist</key><string>The Grates</string>
+			<key>Album</key><string>Gravity Won't Get You High</string>
+			<key>Genre</key><string>Alternative</string>
+			<key>Kind</key><string>Apple Lossless audio file</string>
+			<key>Size</key><integer>30121353</integer>
+			<key>Total Time</key><integer>233840</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Year</key><integer>2006</integer>
+			<key>Date Modified</key><date>2013-08-25T19:03:48Z</date>
+			<key>Date Added</key><date>2013-06-09T06:25:05Z</date>
+			<key>Bit Rate</key><integer>1014</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>1</integer>
+			<key>Play Date</key><integer>3462628351</integer>
+			<key>Play Date UTC</key><date>2013-09-21T07:12:31Z</date>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Sort Artist</key><string>Grates</string>
+			<key>Persistent ID</key><string>66A6738166D04F31</string>
+			<key>Track Type</key><string>File</string>
+			<key>Location</key><string>file:///Volumes/HDD/iTunes/iTunes%20Media/Music/The%20Grates/Gravity%20Won't%20Get%20You%20High/02%20Lies%20are%20Much%20More%20Fun.m4a</string>
+			<key>File Folder Count</key><integer>5</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+	</dict>
+	<key>Playlists</key>
+	<array>
+		<dict>
+			<key>Name</key><string>Blah</string>
+			<key>Playlist ID</key><integer>80896</integer>
+			<key>Playlist Persistent ID</key><string>6F8DF99E653584EA</string>
+			<key>All Items</key><true/>
+			<key>Playlist Items</key>
+			<array>
+				<dict>
+					<key>Track ID</key><integer>24673</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>2261</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>14605</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19937</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19939</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19941</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19943</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19945</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19947</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19949</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19951</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19953</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19955</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19957</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>19959</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

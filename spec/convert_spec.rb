@@ -1,7 +1,3 @@
-require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
-TEST_DIR = File.join(File.dirname(__FILE__), "./test_files")
-SETTINGS = YAML.load_file(File.join(File.dirname(__FILE__), "./test_settings.yml"))
-
 RSpec.describe Convert do
   context "with an mp3 file" do
     mp3 = Convert.new(File.join(TEST_DIR, "test1.mp3"))

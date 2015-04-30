@@ -89,3 +89,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
+TEST_DIR = File.join(File.dirname(__FILE__), "./test_files")
+SETTINGS = YAML.load_file(File.join(File.dirname(__FILE__), "./test_settings.yml"))
