@@ -88,6 +88,10 @@ RSpec.describe Track do
       expect(track.output_location).to eql "/tmp/Blues/Crawling Kingsnake/07 Skin & Bones Blues.mp3"
     end
 
+    it "should not be lossless" do
+      expect(track.lossless?).to be false
+    end
+
   end
 end
 

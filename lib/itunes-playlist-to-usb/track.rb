@@ -68,5 +68,9 @@ class Track
     File.join(dir, file.gsub(/[^\.]+$/, extension))
   end
 
+  def lossless?
+    [ "MPEG Audio File" ].include?(kind)
+  end
+
 
 end
