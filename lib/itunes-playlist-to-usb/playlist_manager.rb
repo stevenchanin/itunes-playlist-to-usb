@@ -6,8 +6,7 @@ class PlaylistManager
 
   def initialize
     @file = SETTINGS["playlist"]
-    puts "Reading #{@file}"
-    @export = Plist::parse_xml(file)
-    @tracks = @export["Tracks"]
+    @tracks = Plist::parse_xml(@file)["Tracks"]
+    @tracks = @tracks.map{|id,data| [id, Track.new(data)] }
   end
 end
