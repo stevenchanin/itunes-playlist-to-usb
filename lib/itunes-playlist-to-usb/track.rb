@@ -72,5 +72,9 @@ class Track
     [ "MPEG Audio File" ].include?(kind)
   end
 
+  def exist?
+    File.exist? output_location
+  end
+
 
 end

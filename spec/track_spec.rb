@@ -92,6 +92,10 @@ RSpec.describe Track do
       expect(track.lossless?).to be false
     end
 
+    it "should not exist" do
+      expect(track.exist?).to be false
+    end
+
   end
 end
 
