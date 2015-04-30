@@ -84,6 +84,10 @@ RSpec.describe Track do
       expect(track.library_folder_count).to eql 1
     end
 
+    it "should have correct output_location" do
+      expect(track.output_location).to eql "/tmp/Blues/Crawling Kingsnake/07 Skin & Bones Blues.mp3"
+    end
+
   end
 end
 
