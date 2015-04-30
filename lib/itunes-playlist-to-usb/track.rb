@@ -69,12 +69,11 @@ class Track
   end
 
   def lossless?
-    [ "MPEG Audio File" ].include?(kind)
+    [ "Apple Lossless audio file" ].include?(kind)
   end
 
   def exist?
     File.exist? output_location
   end
-
 
 end
