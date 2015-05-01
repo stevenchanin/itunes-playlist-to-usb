@@ -12,47 +12,26 @@ class PlaylistExporter < Thor
     puts "*** Debug Mode" if options.debug?
     puts "*** Force Mode" if options.force?
 
-    get_exported_file
-    get_target_directory
 
-    Playlist.new.tracks.each do |id, track|
+    @catalog = {}
+    PlaylistManager.new.tracks.each do |id, track|
+      puts "adding #{track.name}"
       add_track_to_catalog track
     end
 
-    initialize_catalog
-    process_tracks
 
     copy_catalog
   end
 
   private
-  def get_exported_file
-    SETTINGS["playlist"]
-  end
-
-  def get_target_directory
-    SETTINGS["output"]["directory"]
-  end
-
-  def initialize_catalog
-    @catalog = {}
-  end
 
   def add_track_to_catalog(info)
     begin
-      file_uri = URI(info["Location"])
-
-      original_file = URI.decode(file_uri.path)
-      original_file =~ /.*\.(.*)/
-      file_type = $1
-
       @catalog[info.genre] ||= {}
       @catalog[info.genre][info.album] ||= []
-
-      target_name = ("%02d-"  % info.track_number) + "#{info.name}.#{file_type}"
-      @catalog[info.genre][info.album] << {:name => target_name, :file => original_file}
+      @catalog[info.genre][info.album] << {:output => info.output_location, :input => info.location}
     rescue
-      puts "** Error trying to process:\n\t#{name}: #{info}"
+      puts "** Error trying to process:\n\t#{info.name}: #{info.location}"
     end
   end
 
@@ -60,7 +39,7 @@ class PlaylistExporter < Thor
     say "Beginning Copy", :green
     @catalog.each do |genre, albums|
       puts "Genre: #{genre}"
-      genre_path = "#{@target_directory}/#{genre}"
+      genre_path = "#{SETTINGS["output"]["directory"]}/#{genre}"
 
       unless options.debug?
         FileUtils.mkdir(genre_path) unless File.exists?(genre_path)
@@ -68,14 +47,14 @@ class PlaylistExporter < Thor
 
       albums.each do |album, tracks|
         puts "  Album: #{album}"
-        album_path = "#{@target_directory}/#{genre}/#{album}"
+        album_path = "#{SETTINGS["output"]["directory"]}/#{genre}/#{album}"
 
         unless options.debug?
           FileUtils.mkdir(album_path) unless File.exists?(album_path)
         end
 
         tracks.each do |track|
-          full_destination = "#{@target_directory}/#{genre}/#{album}/#{track[:name]}"
+          full_destination = "#{SETTINGS["output"]["directory"]}/#{genre}/#{album}/#{track[:name]}"
           source = track[:file]
 
           if options.verbose?
