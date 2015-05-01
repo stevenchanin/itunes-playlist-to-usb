@@ -15,7 +15,9 @@ class PlaylistExporter < Thor
     get_exported_file
     get_target_directory
 
-    read_plist
+    Playlist.new.tracks.each do |id, track|
+      add_track_to_catalog track
+    end
 
     initialize_catalog
     process_tracks
@@ -25,62 +27,23 @@ class PlaylistExporter < Thor
 
   private
   def get_exported_file
-    @exported_file = SETTINGS["playlist"]
-    found = !SETTINGS["playlist"].nil? && File.exist?(SETTINGS["playlist"])
-
-    until found
-      @exported_file = ask("Location of Playlist [~/Desktop/usb/playlist.xml]")
-      @exported_file = "~/Desktop/usb/playlist.xml" if @exported_file == ""
-      @exported_file = File.expand_path(@exported_file)
-
-      if File.exists?(@exported_file)
-        found = true
-      else
-        say "File #{@exported_file} does not exist", :red
-      end
-    end
+    SETTINGS["playlist"]
   end
 
   def get_target_directory
-    @target_directory = SETTINGS["output"]["directory"]
-    found = !@target_directory.nil? && File.exist?(SETTINGS["playlist"])
-
-    until found
-      @target_directory = ask("Location to which music should be copied [~/Desktop/usb]")
-      @target_directory = "~/Desktop/usb/" if @target_directory == ""
-      @target_directory += "/" unless ("/" == @target_directory[-1])
-
-      @target_directory = File.expand_path(@target_directory)
-
-      if File.exists?(@target_directory)
-        found = true
-      else
-        say "Directory #{@target_directory} does not exist", :red
-      end
-    end
-  end
-
-  def read_plist
-    say "Reading #{@exported_file}", :green
-    @export = Plist::parse_xml(@exported_file)
-    @tracks = @export["Tracks"]
+    SETTINGS["output"]["directory"]
   end
 
   def initialize_catalog
     @catalog = {}
   end
 
-  def process_tracks
-    @tracks.each do |id, info|
-      add_track_to_catalog(info)
-    end
-  end
-
   def add_track_to_catalog(info)
-    name = clean_string(info["Name"])
-    album = clean_string(info["Album"], 25)
-    genre = clean_string(info["Genre"], 20)
-    track_number = info["Track Number"] || 0
+    # TODO: migrate this logic into the track class.
+    name = clean_string(info.name)
+    album = clean_string(info.album, 25)
+    genre = clean_string(info.genre, 20)
+    track_number = info.track_number || 0
 
     begin
       file_uri = URI(info["Location"])
@@ -92,9 +55,6 @@ class PlaylistExporter < Thor
       @catalog[genre] ||= {}
       @catalog[genre][album] ||= []
 
-      if options.verbose?
-        puts "    Cataloging   : #{name} / #{album} / #{genre} / #{track_number}"
-      end
       target_name = ("%02d-"  % track_number) + "#{name}.#{file_type}"
       @catalog[genre][album] << {:name => target_name, :file => original_file}
     rescue
