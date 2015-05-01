@@ -3,15 +3,6 @@ require 'thor'
 require 'ruby-progressbar'
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
-settings_paths = [
-  File.expand_path("~/.itunes-playlist-to-usb"),
-  File.join(File.dirname(__FILE__), "../etc/settings.yml")
-]
-
-settings_paths.each do |s|
-  SETTINGS = YAML.load_file(s) if File.exist?(s)
-end
-
 class PlaylistExporter < Thor
   desc "process", "process playlist"
   method_option :verbose, :type => :boolean, :default => false, :aliases => "-v",
