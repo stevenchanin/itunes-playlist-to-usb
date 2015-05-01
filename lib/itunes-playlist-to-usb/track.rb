@@ -9,7 +9,6 @@ class Track
   attr_reader :kind
   attr_reader :size
   attr_reader :total_time
-  attr_reader :track_number
   attr_reader :year
   attr_reader :date_modified
   attr_reader :date_added
@@ -39,7 +38,6 @@ class Track
     @kind = @playlist_track["Kind"]
     @size = @playlist_track["Size"]
     @total_time = @playlist_track["Total Time"]
-    @track_number = @playlist_track["Track Number"] || 0
     @year = @playlist_track["Year"]
     @date_modified = @playlist_track["Date Modified"]
     @date_added = @playlist_track["Date Added"]
@@ -57,6 +55,10 @@ class Track
 
   def location
     URI.decode(@playlist_track["Location"]).gsub(/^file:\/\//, '')
+  end
+
+  def track_number
+    "%02d" % (@playlist_track["Track Number"] || 0)
   end
 
   def output_location

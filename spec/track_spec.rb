@@ -61,7 +61,7 @@ RSpec.describe Track do
     end
 
     it "should have correct track_number" do
-      expect(track.track_number).to eql 7
+      expect(track.track_number).to eql "07"
     end
 
     it "should have correct year" do
@@ -181,7 +181,7 @@ RSpec.describe Track do
     end
 
     it "should have correct track_number" do
-      expect(track.track_number).to eql 3
+      expect(track.track_number).to eql "03"
     end
 
     it "should have correct year" do
