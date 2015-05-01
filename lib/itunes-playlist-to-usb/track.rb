@@ -65,10 +65,10 @@ class Track
   def output_location
     # TODO: refactor
     file = File.basename(location)
-    dir = File.join(SETTINGS["output"]["directory"], genre, album)
+    library = File.join(SETTINGS["output"]["library_directory"], genre, album)
     codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
     extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
-    File.join(dir, file.gsub(/[^\.]+$/, extension))
+    File.join(library, file.gsub(/[^\.]+$/, extension))
   end
 
   def lossless?

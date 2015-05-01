@@ -2,4 +2,4 @@ playlist: /tmp/playlist.xml
 output:
   codec: mp3
   encoding: mp3
-  directory: /tmp/
+  library_directory: /tmp/
