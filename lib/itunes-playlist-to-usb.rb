@@ -12,8 +12,7 @@ settings_paths = [
 ]
 
 settings_paths.each { |s| SETTINGS = YAML.load_file(s) if File.exist?(s) }
-
-#### PROGRESS BAR #############################################################
+###############################################################################
 
 require 'convert'
 require 'playlist_manager'

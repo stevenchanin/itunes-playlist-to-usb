@@ -79,6 +79,10 @@ class Track
     File.exist? output_location
   end
 
+  def source_exist?
+    File.exist? location
+  end
+
   def save
     unless File.exist? location
       return "skipping #{id} because it's source file is gone!"

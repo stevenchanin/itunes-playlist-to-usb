@@ -5,20 +5,10 @@ require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 class PlaylistExporter < Thor
   desc "process", "process playlist"
-  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v",
-:desc => "running in verbose mode will also show each file as it's copied"
-  method_option :debug, :type => :boolean, :default => false, :aliases => "-d",
-:desc => "in debug mode files will not actually be copied"
-  method_option :force, :type => :boolean, :default => false, :aliases => "-f",
-:desc => "normally, copying a file is skipped if a file with the same name and size already exists in the destination. Force mode always copies."
-
+  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
   def process
-    puts "*** Verbose Mode" if options.verbose?
-    puts "*** Debug Mode" if options.debug?
-    puts "*** Force Mode" if options.force?
-
     @playlist = PlaylistManager.new
-    @progress_bar = ProgressBar.create(:total=>@playlist.tracks(:type=>"lossy").count, :format=>"%t |%B| %p\%")
+    @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
 
     # start with the tracks that don't need compressing.
     @playlist.tracks(:type=>"lossy").each do |id, track|
@@ -26,6 +16,26 @@ class PlaylistExporter < Thor
       @progress_bar.increment
     end
 
+    # process the the tracks that need to be compressed.
+    @playlist.tracks(:type=>"lossless").each do |id, track|
+      options.verbose? ? @progress_bar.log(track.save) : track.save
+      @progress_bar.increment
+    end
+
+  end
+
+  desc "verify", "validate files in library"
+  option :verbose, :type => :boolean, :default => false, :aliases => "-v"
+  def verify
+    @playlist = PlaylistManager.new
+    @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
+
+    # start with the tracks that don't need compressing.
+    @playlist.tracks.each do |id, track|
+      @progress_bar.log("#{track.id} needs to be imported") unless track.exist?
+      @progress_bar.log("#{track.id} has no source file") unless track.source_exist?
+      @progress_bar.increment
+    end
   end
 
 end
