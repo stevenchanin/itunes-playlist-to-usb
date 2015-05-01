@@ -25,8 +25,6 @@ class PlaylistExporter < Thor
     puts "*** Debug Mode" if options.debug?
     puts "*** Force Mode" if options.force?
 
-
-    @catalog = {}
     PlaylistManager.new.tracks.each do |id, track|
       puts "Processing #{track.artist} - #{track.album} - #{track.name}"
       track.save
