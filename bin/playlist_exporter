@@ -17,15 +17,15 @@ class PlaylistExporter < Thor
     puts "*** Debug Mode" if options.debug?
     puts "*** Force Mode" if options.force?
 
-    playlist = PlaylistManager.new
-    progressbar = ProgressBar.create(:total=>playlist.tracks.count, :format=>"%t |%B| %p\%")
-    puts progressbar
-    playlist.tracks.each do |id, track|
-      progressbar.log "Processing #{track.artist} - #{track.album} - #{track.name}"
-      track.save
-      progressbar.increment
-      progressbar.refresh
+    @playlist = PlaylistManager.new
+    @progress_bar = ProgressBar.create(:total=>@playlist.tracks(:type=>"lossy").count, :format=>"%t |%B| %p\%")
+
+    # start with the tracks that don't need compressing.
+    @playlist.tracks(:type=>"lossy").each do |id, track|
+      options.verbose? ? @progress_bar.log(track.save) : track.save
+      @progress_bar.increment
     end
+
   end
 
 end

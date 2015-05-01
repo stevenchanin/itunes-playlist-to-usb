@@ -81,13 +81,11 @@ class Track
 
   def save
     unless File.exist? location
-      #puts "skipping #{name} because it's source file is gone!"
-      return false
+      return "skipping #{id} because it's source file is gone!"
     end
 
     if exist?
-      #puts "skipping #{name} because it already exists"
-      return false
+      return "skipping #{id} because it already exists"
     end
 
     if lossless?
@@ -96,6 +94,7 @@ class Track
       # just copy over
       FileUtils.mkdir_p(File.dirname(output_location))
       FileUtils.cp(location, output_location)
+      return "copying #{id} because it's missing"
     end
 
     true
