@@ -79,11 +79,6 @@ class Track
     File.exist? output_location
   end
 
-  def convert
-    # convert
-    # add a version to the metadata
-  end
-
   def save
     unless File.exist? location
       puts "skipping #{name} because it's source file is gone!"
@@ -96,8 +91,7 @@ class Track
     end
 
     if lossless?
-      # then convert
-      puts "need to do the conversion stuff"
+      Convert.new(self).run
     else
       # just copy over
       FileUtils.mkdir_p(File.dirname(output_location))
