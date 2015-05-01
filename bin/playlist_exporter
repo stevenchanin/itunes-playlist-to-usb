@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'thor'
+require 'ruby-progressbar'
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 settings_paths = [
@@ -25,9 +26,14 @@ class PlaylistExporter < Thor
     puts "*** Debug Mode" if options.debug?
     puts "*** Force Mode" if options.force?
 
-    PlaylistManager.new.tracks.each do |id, track|
-      puts "Processing #{track.artist} - #{track.album} - #{track.name}"
+    playlist = PlaylistManager.new
+    progressbar = ProgressBar.create(:total=>playlist.tracks.count, :format=>"%t |%B| %p\%")
+    puts progressbar
+    playlist.tracks.each do |id, track|
+      progressbar.log "Processing #{track.artist} - #{track.album} - #{track.name}"
       track.save
+      progressbar.increment
+      progressbar.refresh
     end
   end
 

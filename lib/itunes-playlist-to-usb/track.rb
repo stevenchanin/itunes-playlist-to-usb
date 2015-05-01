@@ -81,12 +81,12 @@ class Track
 
   def save
     unless File.exist? location
-      puts "skipping #{name} because it's source file is gone!"
+      #puts "skipping #{name} because it's source file is gone!"
       return false
     end
 
     if exist?
-      puts "skipping #{name} because it already exists"
+      #puts "skipping #{name} because it already exists"
       return false
     end
 

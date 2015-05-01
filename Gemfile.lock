@@ -19,6 +19,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    ruby-progressbar (1.7.5)
     thor (0.19.1)
 
 PLATFORMS
@@ -28,4 +29,5 @@ DEPENDENCIES
   byebug
   plist
   rspec
+  ruby-progressbar
   thor
