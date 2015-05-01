@@ -39,12 +39,6 @@ class PlaylistExporter < Thor
   end
 
   def add_track_to_catalog(info)
-    # TODO: migrate this logic into the track class.
-    name = clean_string(info.name)
-    album = clean_string(info.album, 25)
-    genre = clean_string(info.genre, 20)
-    track_number = info.track_number || 0
-
     begin
       file_uri = URI(info["Location"])
 
@@ -52,26 +46,14 @@ class PlaylistExporter < Thor
       original_file =~ /.*\.(.*)/
       file_type = $1
 
-      @catalog[genre] ||= {}
-      @catalog[genre][album] ||= []
+      @catalog[info.genre] ||= {}
+      @catalog[info.genre][info.album] ||= []
 
-      target_name = ("%02d-"  % track_number) + "#{name}.#{file_type}"
-      @catalog[genre][album] << {:name => target_name, :file => original_file}
+      target_name = ("%02d-"  % info.track_number) + "#{info.name}.#{file_type}"
+      @catalog[info.genre][info.album] << {:name => target_name, :file => original_file}
     rescue
       puts "** Error trying to process:\n\t#{name}: #{info}"
     end
-  end
-
-  def clean_string(s, cutoff_at = nil)
-    unless s.is_a?(String)
-      s = 'Blank'
-    end
-
-    if cutoff_at
-      s = s[0, cutoff_at]
-    end
-
-    s && s.gsub(/\/|\(|\)/, '_')
   end
 
   def copy_catalog

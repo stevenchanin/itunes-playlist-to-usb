@@ -32,14 +32,14 @@ class Track
     end
 
     @id = @playlist_track["Track ID"]
-    @name = @playlist_track["Name"]
+    @name = clean_string(@playlist_track["Name"])
     @artist = @playlist_track["Artist"]
-    @album = @playlist_track["Album"]
-    @genre = @playlist_track["Genre"]
+    @album = clean_string(@playlist_track["Album"])
+    @genre = clean_string(@playlist_track["Genre"])
     @kind = @playlist_track["Kind"]
     @size = @playlist_track["Size"]
     @total_time = @playlist_track["Total Time"]
-    @track_number = @playlist_track["Track Number"]
+    @track_number = @playlist_track["Track Number"] || 0
     @year = @playlist_track["Year"]
     @date_modified = @playlist_track["Date Modified"]
     @date_added = @playlist_track["Date Added"]
@@ -74,6 +74,16 @@ class Track
 
   def exist?
     File.exist? output_location
+  end
+
+  private
+  def clean_string(s, cutoff_at = nil)
+    unless s.is_a?(String)
+      s = 'Blank'
+    end
+    s = s[0, cutoff_at] if cutoff_at
+    s && s.gsub(/\/|\(|\)/, '_')
+    s.split.map(&:capitalize).join(" ")
   end
 
 end
