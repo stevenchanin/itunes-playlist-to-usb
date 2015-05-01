@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+require 'thor'
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 settings_paths = [

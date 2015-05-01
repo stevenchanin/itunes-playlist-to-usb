@@ -1,4 +1,7 @@
 class Convert
+  require 'fileutils'
+  require 'shellwords'
+
   def initialize track
     @track = track
     @codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))

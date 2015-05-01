@@ -1,6 +1,6 @@
 class Track
-  require 'uri'
   require 'fileutils'
+  require 'uri'
 
   attr_reader :id
   attr_reader :name
