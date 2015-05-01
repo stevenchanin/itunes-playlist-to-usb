@@ -15,12 +15,13 @@ class PlaylistExporter < Thor
 
     @catalog = {}
     PlaylistManager.new.tracks.each do |id, track|
-      puts "adding #{track.name}"
-      add_track_to_catalog track
+      puts "Processing #{track.artist} - #{track.album} - #{track.name}"
+      #add_track_to_catalog track
+      track.save
     end
 
-
-    copy_catalog
+    #process_tracks
+    #copy_catalog
   end
 
   private

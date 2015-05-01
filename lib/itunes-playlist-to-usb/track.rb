@@ -1,5 +1,6 @@
 class Track
   require 'uri'
+  require 'fileutils'
 
   attr_reader :id
   attr_reader :name
@@ -76,6 +77,34 @@ class Track
 
   def exist?
     File.exist? output_location
+  end
+
+  def convert
+    # convert
+    # add a version to the metadata
+  end
+
+  def save
+    unless File.exist? location
+      puts "skipping #{name} because it's source file is gone!"
+      return false
+    end
+
+    if exist?
+      puts "skipping #{name} because it already exists"
+      return false
+    end
+
+    if lossless?
+      # then convert
+      puts "need to do the conversion stuff"
+    else
+      # just copy over
+      FileUtils.mkdir_p(File.dirname(output_location))
+      FileUtils.cp(location, output_location)
+    end
+
+    true
   end
 
   private
