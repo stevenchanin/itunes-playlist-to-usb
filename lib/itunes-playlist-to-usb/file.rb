@@ -8,10 +8,17 @@ module PL2USB
 
     def initialize path
       @path = path
-      @info = ::AudioInfo.new(path)
-      @length = @info.length
-      @extension = @info.extension.downcase
-      @size = ::File.size(path)
+      begin
+        @info = ::AudioInfo.new(path)
+        @length = @info.length
+        @extension = @info.extension.downcase
+        @size = ::File.size(path)
+      rescue
+        @info = nil
+        @length = nil
+        @extension = nil
+        @size = nil
+      end
     end
 
     def lossless?

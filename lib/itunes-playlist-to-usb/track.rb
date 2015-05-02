@@ -62,11 +62,11 @@ module PL2USB
     end
 
     def destination
-      codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
+      codecs = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))
       extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
       n = name.downcase.gsub(/[^a-z0-9]/, '_')
       PL2USB::File.new(
-        File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}")
+        ::File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}")
       )
     end
 
@@ -91,7 +91,7 @@ module PL2USB
         Convert.new(self).run
       else
         # just copy over
-        FileUtils.mkdir_p(File.dirname(destination.path))
+        FileUtils.mkdir_p(::File.dirname(destination.path))
         FileUtils.cp(location, output_location)
         return "copying #{id} because it's missing"
       end
