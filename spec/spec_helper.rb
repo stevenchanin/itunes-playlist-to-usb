@@ -90,6 +90,7 @@ RSpec.configure do |config|
 =end
 end
 
-require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
-TEST_DIR = File.join(File.dirname(__FILE__), "./test_files")
-SETTINGS = YAML.load_file(File.join(File.dirname(__FILE__), "./test_settings.yml"))
+@media_directory = File.join(File.dirname(__FILE__), "test_files")
+require File.join(@media_directory, "../../lib/itunes-playlist-to-usb")
+SETTINGS = YAML.load_file(File.join(@media_directory, "../test_settings.yml"))
+PLAYLIST = ERB.new(File.read(File.join(@media_directory, "playlist.xml.erb"))).result

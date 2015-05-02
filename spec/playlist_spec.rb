@@ -1,6 +1,5 @@
 RSpec.describe PlaylistManager do
-  SETTINGS["playlist"] = File.join(TEST_DIR, "playlist.xml")
-  playlist = PlaylistManager.new
+  playlist = PlaylistManager.new(PLAYLIST)
 
   context "with an playlist file" do
     it "should have correct number of tracks" do
