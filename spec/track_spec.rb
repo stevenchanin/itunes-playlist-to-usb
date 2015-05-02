@@ -1,5 +1,5 @@
 RSpec.describe PL2USB::Track do
-  context "mp3 track" do
+  context "mp3" do
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
 
     it "should have correct id" do
@@ -22,16 +22,8 @@ RSpec.describe PL2USB::Track do
       expect(track.genre).to eql "Test1 Genre"
     end
 
-    it "should have correct kind" do
-      expect(track.kind).to eql "MPEG audio file"
-    end
-
-    it "should have correct size" do
-      expect(track.size).to eql 199850
-    end
-
-    it "should have correct total_time" do
-      expect(track.total_time).to eql 12
+    it "should have correct length" do
+      expect(track.length).to eql 12
     end
 
     it "should have correct track_number" do
@@ -42,20 +34,8 @@ RSpec.describe PL2USB::Track do
       expect(track.year).to eql 2015
     end
 
-    it "should have correct bit_rate" do
-      expect(track.bit_rate).to eql 128
-    end
-
-    it "should have correct sample_rate" do
-      expect(track.sample_rate).to eql 44100
-    end
-
     it "should have correct artwork_count" do
       expect(track.artwork_count).to eql 1
-    end
-
-    it "should have correct track_type" do
-      expect(track.track_type).to eql "File"
     end
 
     it "should have a PL2USB::File object as source" do
@@ -65,14 +45,9 @@ RSpec.describe PL2USB::Track do
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
     end
-
-    it "should not be lossless" do
-      expect(track.lossless?).to be false
-    end
-
   end
 
-  context "alac track" do
+  context "alac" do
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
 
     it "should have correct id" do
@@ -95,16 +70,8 @@ RSpec.describe PL2USB::Track do
       expect(track.genre).to eql "Test2 Genre"
     end
 
-    it "should have correct kind" do
-      expect(track.kind).to eql "Apple Lossless audio file"
-    end
-
-    it "should have correct size" do
-      expect(track.size).to eql 993049
-    end
-
-    it "should have correct total_time" do
-      expect(track.total_time).to eql 11
+    it "should have correct length" do
+      expect(track.length).to eql 11
     end
 
     it "should have correct track_number" do
@@ -115,20 +82,8 @@ RSpec.describe PL2USB::Track do
       expect(track.year).to eql 2009
     end
 
-    it "should have correct bit_rate" do
-      expect(track.bit_rate).to eql 702
-    end
-
-    it "should have correct sample_rate" do
-      expect(track.sample_rate).to eql 44100
-    end
-
     it "should have correct artwork_count" do
       expect(track.artwork_count).to eql 1
-    end
-
-    it "should have correct track_type" do
-      expect(track.track_type).to eql "File"
     end
 
     it "should have a PL2USB::File object as source" do
@@ -137,10 +92,6 @@ RSpec.describe PL2USB::Track do
 
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
-    end
-
-    it "should not be lossless" do
-      expect(track.lossless?).to be true
     end
 
   end

@@ -5,9 +5,11 @@ module PL2USB
     attr_reader :extension
     attr_reader :size
     attr_reader :path
+    attr_reader :kind
 
-    def initialize path
+    def initialize path, kind
       @path = path
+      @kind = kind
       begin
         @info = ::AudioInfo.new(path)
         @length = @info.length
@@ -28,6 +30,12 @@ module PL2USB
 
     def exist?
       ::File.exist? path
+    end
+
+    def bit_rate
+    end
+
+    def sample_rate
     end
 
   end

@@ -15,9 +15,9 @@ module PL2USB
       when "any"
         @tracks
       when "lossless"
-        @tracks.map{|t| t if t.lossless?}.compact
+        @tracks.map{|t| t if t.source.lossless?}.compact
       when "lossy"
-        @tracks.map{|t| t unless t.lossless?}.compact
+        @tracks.map{|t| t unless t.source.lossless?}.compact
       end
     end
   end
