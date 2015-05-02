@@ -3,7 +3,7 @@ RSpec.describe PlaylistManager do
 
   context "with an playlist file" do
     it "should have correct number of tracks" do
-      expect(playlist.tracks.count).to eql 15
+      expect(playlist.tracks.count).to eql 2
     end
 
     it "tracks should be an id and Track" do
