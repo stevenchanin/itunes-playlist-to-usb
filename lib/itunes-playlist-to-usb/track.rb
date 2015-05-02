@@ -55,39 +55,35 @@ module PL2USB
       @library_folder_count = @playlist_track["Library Folder Count"]
     end
 
-    def source_file
-      URI.decode(@playlist_track["Location"]).gsub(/^file:\/\//, '')
+    def source
+      PL2USB::File.new(
+        URI.decode(@playlist_track["Location"]).gsub(/^file:\/\//, '')
+      )
+    end
+
+    def destination
+      codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
+      extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
+      n = name.downcase.gsub(/[^a-z0-9]/, '_')
+      PL2USB::File.new(
+        File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}")
+      )
     end
 
     def track_number
       "%02d" % (@playlist_track["Track Number"] || 0)
     end
 
-    def output_location
-      codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
-      extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
-      n = name.downcase.gsub(/[^a-z0-9]/, '_')
-      File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}")
-    end
-
     def lossless?
       [ "Apple Lossless audio file" ].include?(kind)
     end
 
-    def exist?
-      File.exist? output_location
-    end
-
-    def source_exist?
-      File.exist? location
-    end
-
     def save
-      unless File.exist? location
+      unless source.exist?
         return "skipping #{id} because it's source file is gone!"
       end
 
-      if exist?
+      if destination.exist?
         return "skipping #{id} because it already exists"
       end
 
@@ -95,7 +91,7 @@ module PL2USB
         Convert.new(self).run
       else
         # just copy over
-        FileUtils.mkdir_p(File.dirname(output_location))
+        FileUtils.mkdir_p(File.dirname(destination.path))
         FileUtils.cp(location, output_location)
         return "copying #{id} because it's missing"
       end

@@ -1,10 +1,16 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    apetag (1.1.5)
+      cicphash (>= 1.0.0)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    cicphash (1.1.0)
     columnize (0.9.0)
     diff-lcs (1.2.5)
+    flacinfo-rb (1.0)
+    moumar-wmainfo-rb (0.8)
+    mp4info (1.7.3)
     plist (3.1.0)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
@@ -19,8 +25,19 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    ruby-audioinfo (0.5.1)
+      apetag (>= 1.1.4)
+      flacinfo-rb (>= 0.4)
+      moumar-wmainfo-rb (>= 0.7)
+      mp4info (>= 1.7.3)
+      ruby-mp3info (>= 0.8)
+      ruby-ogginfo (>= 0.7)
+      wavefile (>= 0.6.0)
+    ruby-mp3info (0.8.6)
+    ruby-ogginfo (0.7.2)
     ruby-progressbar (1.7.5)
     thor (0.19.1)
+    wavefile (0.6.0)
 
 PLATFORMS
   ruby
@@ -29,5 +46,6 @@ DEPENDENCIES
   byebug
   plist
   rspec
+  ruby-audioinfo
   ruby-progressbar
   thor

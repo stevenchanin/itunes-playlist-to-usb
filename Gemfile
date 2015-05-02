@@ -5,3 +5,4 @@ gem "plist"
 gem 'byebug'
 gem 'rspec'
 gem 'ruby-progressbar'
+gem 'ruby-audioinfo'
