@@ -1,51 +1,25 @@
 RSpec.describe Track do
   context "mp3 track" do
-    track = Track.new({
-      "Track ID"=>2261,
-      "Name"=>"Skin & Bones Blues",
-      "Artist"=>"Honeyboy Edwards",
-      "Album"=>"crawling Kingsnake",
-      "Genre"=>"blues",
-      "Kind"=>"MPEG audio file",
-      "Size"=>6608553,
-      "Total Time"=>153887,
-      "Track Number"=>7,
-      "Year"=>1964,
-      "Date Modified"=>"",
-      "Date Added"=>"",
-      "Bit Rate"=>320,
-      "Sample Rate"=>44100,
-      "Play Count"=>3,
-      "Play Date"=>3490444729,
-      "Play Date UTC"=>"",
-      "Skip Count"=>1,
-      "Skip Date"=>"",
-      "Artwork Count"=>1,
-      "Persistent ID"=>"31E962ED2DB7032B",
-      "Track Type"=>"File",
-      "Location"=>"file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Honeyboy%20Edwards/Crawling%20Kingsnake/07%20Skin%20&%20Bones%20Blues.mp3",
-      "File Folder Count"=>5,
-      "Library Folder Count"=>1,
-    })
+    track = Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
 
     it "should have correct id" do
       expect(track.id).to eql 2261
     end
 
     it "should have correct name" do
-      expect(track.name).to eql "Skin & Bones Blues"
+      expect(track.name).to eql "Test1 Title"
     end
 
     it "should have correct artist" do
-      expect(track.artist).to eql "Honeyboy Edwards"
+      expect(track.artist).to eql "Test1 Artist"
     end
 
     it "should have correct album" do
-      expect(track.album).to eql "Crawling Kingsnake"
+      expect(track.album).to eql "Test1 Album"
     end
 
     it "should have correct genre" do
-      expect(track.genre).to eql "Blues"
+      expect(track.genre).to eql "Test1 Genre"
     end
 
     it "should have correct kind" do
@@ -53,35 +27,27 @@ RSpec.describe Track do
     end
 
     it "should have correct size" do
-      expect(track.size).to eql 6608553
+      expect(track.size).to eql 199850
     end
 
     it "should have correct total_time" do
-      expect(track.total_time).to eql 153887
+      expect(track.total_time).to eql 12
     end
 
     it "should have correct track_number" do
-      expect(track.track_number).to eql "07"
+      expect(track.track_number).to eql "01"
     end
 
     it "should have correct year" do
-      expect(track.year).to eql 1964
+      expect(track.year).to eql 2015
     end
 
     it "should have correct bit_rate" do
-      expect(track.bit_rate).to eql 320
+      expect(track.bit_rate).to eql 128
     end
 
     it "should have correct sample_rate" do
       expect(track.sample_rate).to eql 44100
-    end
-
-    it "should have correct play_count" do
-      expect(track.play_count).to eql 3
-    end
-
-    it "should have correct skip_count" do
-      expect(track.skip_count).to eql 1
     end
 
     it "should have correct artwork_count" do
@@ -97,19 +63,11 @@ RSpec.describe Track do
     end
 
     it "should have correct location" do
-      expect(track.location).to eql "/Volumes/HDD/iTunes/iTunes Media/Music/Honeyboy Edwards/Crawling Kingsnake/07 Skin & Bones Blues.mp3"
-    end
-
-    it "should have correct file_folder_count" do
-      expect(track.file_folder_count).to eql 5
-    end
-
-    it "should have correct library_folder_count" do
-      expect(track.library_folder_count).to eql 1
+      expect(track.location).to eql "#{File.dirname(__FILE__)}/test_files/test1.mp3"
     end
 
     it "should have correct output_location" do
-      expect(track.output_location).to eql "/tmp/Blues/Crawling Kingsnake/07 Skin & Bones Blues.mp3"
+      expect(track.output_location).to eql "/tmp/Test1 Genre/Test1 Album/01 test1_title.mp3"
     end
 
     it "should not be lossless" do
@@ -123,49 +81,26 @@ RSpec.describe Track do
   end
 
   context "alac track" do
-    track = Track.new({
-      "Track ID"=>19941,
-      "Name"=>"Come As You Are",
-      "Artist"=>"Nirvana",
-      "Album"=>"Nevermind",
-      "Genre"=>"Grunge",
-      "Kind"=>"Apple Lossless audio file",
-      "Size"=>26334897,
-      "Total Time"=>219106,
-      "Track Number"=>3,
-      "Track Count"=>12,
-      "Year"=>1991,
-      "Date Modified"=>"",
-      "Date Added"=>"",
-      "Bit Rate"=>917,
-      "Sample Rate"=>44100,
-      "Artwork Count"=>1,
-      "Persistent ID"=>"4AF9F5E4A581DD31",
-      "Track Type"=>"File",
-      "Location"=>"file:///Volumes/HDD/iTunes/iTunes%20Media/Music/Nirvana/Nevermind/03%20Come%20As%20You%20Are.m4a",
-      "File Folder Count"=>5,
-      "Library Folder Count"=>1
-    })
-
+    track = Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
 
     it "should have correct id" do
-      expect(track.id).to eql 19941
+      expect(track.id).to eql 14605
     end
 
     it "should have correct name" do
-      expect(track.name).to eql "Come As You Are"
+      expect(track.name).to eql "Test2 Title"
     end
 
     it "should have correct artist" do
-      expect(track.artist).to eql "Nirvana"
+      expect(track.artist).to eql "Test2 Artist"
     end
 
     it "should have correct album" do
-      expect(track.album).to eql "Nevermind"
+      expect(track.album).to eql "Test2 Album"
     end
 
     it "should have correct genre" do
-      expect(track.genre).to eql "Grunge"
+      expect(track.genre).to eql "Test2 Genre"
     end
 
     it "should have correct kind" do
@@ -173,43 +108,31 @@ RSpec.describe Track do
     end
 
     it "should have correct size" do
-      expect(track.size).to eql 26334897
+      expect(track.size).to eql 993049
     end
 
     it "should have correct total_time" do
-      expect(track.total_time).to eql 219106
+      expect(track.total_time).to eql 11
     end
 
     it "should have correct track_number" do
-      expect(track.track_number).to eql "03"
+      expect(track.track_number).to eql "02"
     end
 
     it "should have correct year" do
-      expect(track.year).to eql 1991
+      expect(track.year).to eql 2009
     end
 
     it "should have correct bit_rate" do
-      expect(track.bit_rate).to eql 917
+      expect(track.bit_rate).to eql 702
     end
 
     it "should have correct sample_rate" do
       expect(track.sample_rate).to eql 44100
     end
 
-    it "should have correct play_count" do
-      expect(track.play_count).to eql nil
-    end
-
-    it "should have correct skip_count" do
-      expect(track.skip_count).to eql nil
-    end
-
     it "should have correct artwork_count" do
       expect(track.artwork_count).to eql 1
-    end
-
-    it "should have correct persistent_id" do
-      expect(track.persistent_id).to eql "4AF9F5E4A581DD31"
     end
 
     it "should have correct track_type" do
@@ -217,19 +140,11 @@ RSpec.describe Track do
     end
 
     it "should have correct location" do
-      expect(track.location).to eql "/Volumes/HDD/iTunes/iTunes Media/Music/Nirvana/Nevermind/03 Come As You Are.m4a"
-    end
-
-    it "should have correct file_folder_count" do
-      expect(track.file_folder_count).to eql 5
-    end
-
-    it "should have correct library_folder_count" do
-      expect(track.library_folder_count).to eql 1
+      expect(track.location).to eql "#{File.dirname(__FILE__)}/test_files/test2.m4a"
     end
 
     it "should have correct output_location" do
-      expect(track.output_location).to eql "/tmp/Grunge/Nevermind/03 Come As You Are.mp3"
+      expect(track.output_location).to eql "/tmp/Test2 Genre/Test2 Album/02 test2_title.mp3"
     end
 
     it "should not be lossless" do

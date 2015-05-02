@@ -33,7 +33,7 @@ class Track
 
     @id = @playlist_track["Track ID"]
     @name = clean_string(@playlist_track["Name"])
-    @artist = @playlist_track["Artist"]
+    @artist = clean_string(@playlist_track["Artist"])
     @album = clean_string(@playlist_track["Album"])
     @genre = clean_string(@playlist_track["Genre"])
     @kind = @playlist_track["Kind"]
@@ -63,12 +63,10 @@ class Track
   end
 
   def output_location
-    # TODO: refactor
-    file = File.basename(location)
-    library = File.join(SETTINGS["output"]["library_directory"], genre, album)
     codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
     extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
-    File.join(library, file.gsub(/[^\.]+$/, extension))
+    n = name.downcase.gsub(/[^a-z0-9]/, '_')
+    File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}")
   end
 
   def lossless?
