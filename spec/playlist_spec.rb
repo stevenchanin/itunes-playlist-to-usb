@@ -1,5 +1,5 @@
-RSpec.describe PlaylistManager do
-  playlist = PlaylistManager.new(PLAYLIST_XML)
+RSpec.describe PL2USB::Playlist do
+  playlist = PL2USB::Playlist.new(PLAYLIST_XML)
 
   context "with an playlist file" do
     it "should have correct number of tracks" do
@@ -8,7 +8,7 @@ RSpec.describe PlaylistManager do
 
     it "tracks should be an array of Tracks" do
       expect(playlist.tracks).to be_a_kind_of(Array)
-      expect(playlist.tracks.first).to be_a_kind_of(Track)
+      expect(playlist.tracks.first).to be_a_kind_of(PL2USB::Track)
     end
 
     it "should find just lossy tracks" do

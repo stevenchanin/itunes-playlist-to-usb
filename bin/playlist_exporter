@@ -7,7 +7,7 @@ class PlaylistExporter < Thor
   desc "process", "process playlist"
   method_option :verbose, :type => :boolean, :default => false, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
   def process
-    @playlist = PlaylistManager.new
+    @playlist = PL2USB::Playlist.new
     @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
 
     # start with the tracks that don't need compressing.
@@ -27,7 +27,7 @@ class PlaylistExporter < Thor
   desc "verify", "validate files in library"
   option :verbose, :type => :boolean, :default => false, :aliases => "-v"
   def verify
-    @playlist = PlaylistManager.new
+    @playlist = PL2USB::Playlist.new
     @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
 
     # start with the tracks that don't need compressing.

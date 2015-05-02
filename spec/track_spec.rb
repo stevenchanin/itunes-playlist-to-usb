@@ -1,6 +1,6 @@
-RSpec.describe Track do
+RSpec.describe PL2USB::Track do
   context "mp3 track" do
-    track = Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
+    track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
 
     it "should have correct id" do
       expect(track.id).to eql 2261
@@ -54,16 +54,12 @@ RSpec.describe Track do
       expect(track.artwork_count).to eql 1
     end
 
-    it "should have correct persistent_id" do
-      expect(track.persistent_id).to eql "31E962ED2DB7032B"
-    end
-
     it "should have correct track_type" do
       expect(track.track_type).to eql "File"
     end
 
-    it "should have correct location" do
-      expect(track.location).to eql "#{File.dirname(__FILE__)}/test_files/test1.mp3"
+    it "should have correct source_file" do
+      expect(track.source_file).to eql "#{File.dirname(__FILE__)}/test_files/test1.mp3"
     end
 
     it "should have correct output_location" do
@@ -81,7 +77,7 @@ RSpec.describe Track do
   end
 
   context "alac track" do
-    track = Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
+    track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
 
     it "should have correct id" do
       expect(track.id).to eql 14605
@@ -139,8 +135,8 @@ RSpec.describe Track do
       expect(track.track_type).to eql "File"
     end
 
-    it "should have correct location" do
-      expect(track.location).to eql "#{File.dirname(__FILE__)}/test_files/test2.m4a"
+    it "should have correct source file" do
+      expect(track.source_file).to eql "#{File.dirname(__FILE__)}/test_files/test2.m4a"
     end
 
     it "should have correct output_location" do
