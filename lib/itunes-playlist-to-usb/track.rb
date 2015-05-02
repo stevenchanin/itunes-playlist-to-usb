@@ -62,7 +62,7 @@ module PL2USB
       end
 
       if source.lossless?
-        Convert.new(self).run
+        PL2USB::Convert.new(self).run
       else
         # just copy over
         FileUtils.mkdir_p(::File.dirname(destination.path))

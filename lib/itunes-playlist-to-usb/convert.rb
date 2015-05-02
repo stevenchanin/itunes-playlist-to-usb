@@ -1,19 +1,33 @@
-class Convert
-  require 'fileutils'
-  require 'shellwords'
+module PL2USB
+  class Convert
+    require 'fileutils'
+    require 'shellwords'
 
-  def initialize track
-    @track = track
-    @codecs = YAML.load_file(File.join(File.dirname(__FILE__), "../../etc/codecs.yml"))
-  end
+    attr_reader :codec
 
-  def run
-    input_file = Shellwords.escape(@track.location)
-    output_file = Shellwords.escape(@track.output_location)
-    output_codec = @codecs[SETTINGS["output"]["codec"]]["codec"]
-    cmd = "ffmpeg -i #{input_file} -codec:v copy -codec:a #{output_codec} -q:a 2 #{output_file} &> /dev/null"
-    #puts cmd
-    FileUtils.mkdir_p(File.dirname(@track.output_location))
-    system(cmd)
+    def initialize track
+      @track = track
+      @codec = track.destination.codec
+    end
+
+    def run
+      return false unless convertable?
+      cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
+      ::FileUtils.mkdir_p(::File.dirname(destination))
+      system(cmd)
+      true
+    end
+
+    def source
+      Shellwords.escape(@track.source.path)
+    end
+
+    def destination
+      Shellwords.escape(@track.destination.path)
+    end
+
+    def convertable?
+      @track.source.lossless?
+    end
   end
 end

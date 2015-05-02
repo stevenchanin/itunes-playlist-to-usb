@@ -10,20 +10,13 @@ class PlaylistExporter < Thor
     xml = File.read(SETTINGS["playlist"])
     @playlist = PL2USB::Playlist.new(xml)
 
-    tracks = @playlist.tracks(:type=>"lossy")
+    tracks = @playlist.tracks(:type=>"lossless")
     @progress_bar = ProgressBar.create(:total=>tracks.count, :format=>"%c of %C |%B| %P\%")
 
-    # start with the tracks that don't need compressing.
     tracks.each do |track|
       options.verbose? ? @progress_bar.log(track.save) : track.save
       @progress_bar.increment
     end
-
-    ## process the the tracks that need to be compressed.
-    #@playlist.tracks(:type=>"lossless").each do |id, track|
-    #  options.verbose? ? @progress_bar.log(track.save) : track.save
-    #  @progress_bar.increment
-    #end
 
   end
 
