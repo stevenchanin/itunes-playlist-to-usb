@@ -53,22 +53,7 @@ module PL2USB
     end
 
     def save
-      unless source.exist?
-        return "skipping #{id} because it's source file is gone!"
-      end
-
-      if destination.exist?
-        return "skipping #{id} because it already exists"
-      end
-
-      if source.lossless?
-        PL2USB::Convert.new(self).run
-      else
-        # just copy over
-        FileUtils.mkdir_p(::File.dirname(destination.path))
-        FileUtils.cp(source.path, destination.path)
-        return "copying #{id} because it's missing"
-      end
+      PL2USB::Process.new(self).process
     end
 
     private

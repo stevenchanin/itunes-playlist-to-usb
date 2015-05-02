@@ -14,7 +14,7 @@ settings_paths = [
 settings_paths.each { |s| SETTINGS = YAML.load_file(s) if File.exist?(s) }
 ###############################################################################
 
-require 'convert'
+require 'process'
 require 'playlist'
 require 'track'
 require 'file'
