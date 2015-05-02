@@ -14,6 +14,10 @@ RSpec.describe PL2USB::Track do
       expect(file.length).to be_nil
     end
 
+    it "should have extension" do
+      expect(file.extension).to eql "mp3"
+    end
+
     it "should not be lossless" do
       expect(file.lossless?).to be false
     end
@@ -44,6 +48,10 @@ RSpec.describe PL2USB::Track do
 
     it "should have correct length" do
       expect(file.length).to eql 12
+    end
+
+    it "should have extension" do
+      expect(file.extension).to eql "mp3"
     end
 
     it "should not be lossless" do

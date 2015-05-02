@@ -22,7 +22,6 @@ module PL2USB
       rescue
         @info = nil
         @length = nil
-        @extension = nil
         @size = nil
         @bitrate = nil
       end
