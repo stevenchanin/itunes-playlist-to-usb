@@ -16,6 +16,10 @@ module PL2USB
       @codec_info["lossless"]
     end
 
+    def codec
+      @codec_info["codec"]
+    end
+
     def exist?
       ::File.exist? path
     end

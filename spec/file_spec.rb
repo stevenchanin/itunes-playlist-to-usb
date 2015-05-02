@@ -33,6 +33,10 @@ RSpec.describe PL2USB::Track do
     it "should have nil bitrate" do
       expect(file.bitrate).to be nil
     end
+
+    it "should know the codec" do
+      expect(file.codec).to eql "libmp3lame"
+    end
   end
 
   context "test1" do
@@ -68,6 +72,10 @@ RSpec.describe PL2USB::Track do
 
     it "should have correct bitrate" do
       expect(file.bitrate).to eql 128
+    end
+
+    it "should know the codec" do
+      expect(file.codec).to eql "libmp3lame"
     end
   end
 
