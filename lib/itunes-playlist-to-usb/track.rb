@@ -38,6 +38,7 @@ module PL2USB
     end
 
     def destination
+      # FIXME: refactor
       codecs = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))
       extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
       n = name.downcase.gsub(/[^a-z0-9]/, '_')
@@ -88,6 +89,8 @@ module PL2USB
         "mp3"
       when "Apple Lossless audio file"
         "alac"
+      when "AAC audio file"
+        "aac"
       else
         nil
       end

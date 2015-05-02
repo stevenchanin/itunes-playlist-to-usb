@@ -3,7 +3,7 @@ RSpec.describe PL2USB::Playlist do
 
   context "with an playlist file" do
     it "should have correct number of tracks" do
-      expect(playlist.tracks.count).to eql 2
+      expect(playlist.tracks.count).to eql 3
     end
 
     it "tracks should be an array of Tracks" do
@@ -12,7 +12,7 @@ RSpec.describe PL2USB::Playlist do
     end
 
     it "should find just lossy tracks" do
-      expect(playlist.tracks(:type=>"lossy").size).to eql 1
+      expect(playlist.tracks(:type=>"lossy").size).to eql 2
       expect(playlist.tracks(:type=>"lossy").first.name).to eql "Test1 Title"
     end
 

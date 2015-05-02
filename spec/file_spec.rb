@@ -87,4 +87,19 @@ RSpec.describe PL2USB::Track do
     end
   end
 
+  context "test3" do
+    file = PL2USB::File.new(::File.join(::File.dirname(__FILE__), "test_files/test3.m4a"), "aac")
+
+    it "should not be lossless" do
+      expect(file.lossless?).to be false
+    end
+
+    it "should have correct kind" do
+      expect(file.kind).to eql "aac"
+    end
+
+    it "should have correct bitrate" do
+      expect(file.bitrate).to eql nil
+    end
+  end
 end

@@ -8,7 +8,7 @@ alac:
   extension: m4a
   lossless: true
 
-mp4a:
+aac:
   codec:
   extension: m4a
   lossless: false
