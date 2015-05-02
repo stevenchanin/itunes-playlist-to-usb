@@ -93,4 +93,4 @@ end
 @media_directory = File.join(File.dirname(__FILE__), "test_files")
 require File.join(@media_directory, "../../lib/itunes-playlist-to-usb")
 SETTINGS = YAML.load_file(File.join(@media_directory, "../test_settings.yml"))
-PLAYLIST = ERB.new(File.read(File.join(@media_directory, "playlist.xml.erb"))).result
+PLAYLIST_XML = ERB.new(File.read(File.join(@media_directory, "playlist.xml.erb"))).result

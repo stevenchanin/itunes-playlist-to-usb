@@ -6,7 +6,7 @@ class PlaylistManager
   def initialize xml
     @tracks = Plist::parse_xml(xml)["Tracks"]
     puts "collecting track objects"
-    @tracks = @tracks.map{|id,data| [id, Track.new(data)] }
+    @tracks = @tracks.map{|id,data| Track.new(data) }
   end
 
   def tracks options={:type=>"any"}
@@ -14,9 +14,9 @@ class PlaylistManager
     when "any"
       @tracks
     when "lossless"
-      @tracks.map{|t| t if t.last.lossless?}.compact
+      @tracks.map{|t| t if t.lossless?}.compact
     when "lossy"
-      @tracks.map{|t| t unless t.last.lossless?}.compact
+      @tracks.map{|t| t unless t.lossless?}.compact
     end
   end
 end
