@@ -23,7 +23,7 @@ module PL2USB
 
     def lossless?
       # FIXME: m4a's can be lossy or lossless.
-      extension != "mp3"
+      extension.nil? ? nil : (extension != "mp3")
     end
 
     def exist?
