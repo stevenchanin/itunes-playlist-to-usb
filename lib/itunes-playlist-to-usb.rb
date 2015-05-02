@@ -15,6 +15,6 @@ settings_paths.each { |s| SETTINGS = YAML.load_file(s) if File.exist?(s) }
 ###############################################################################
 
 require 'convert'
-require 'playlist_manager'
+require 'playlist'
 require 'track'
 require 'file'
