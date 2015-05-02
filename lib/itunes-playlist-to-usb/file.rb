@@ -10,10 +10,12 @@ module PL2USB
     def initialize path, kind
       @path = path
       @kind = kind
+      @codec_info = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))[@kind]
+      @extension = @codec_info["extension"]
+
       begin
         @info = ::AudioInfo.new(path)
         @length = @info.length
-        @extension = @info.extension.downcase
         @size = ::File.size(path)
       rescue
         @info = nil
@@ -24,8 +26,7 @@ module PL2USB
     end
 
     def lossless?
-      # FIXME: m4a's can be lossy or lossless.
-      extension.nil? ? nil : (extension != "mp3")
+      @codec_info["lossless"]
     end
 
     def exist?

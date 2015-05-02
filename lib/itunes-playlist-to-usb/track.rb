@@ -60,7 +60,7 @@ module PL2USB
         return "skipping #{id} because it already exists"
       end
 
-      if lossless?
+      if source.lossless?
         Convert.new(self).run
       else
         # just copy over
