@@ -7,20 +7,23 @@ class PlaylistExporter < Thor
   desc "process", "process playlist"
   method_option :verbose, :type => :boolean, :default => false, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
   def process
-    @playlist = PL2USB::Playlist.new
-    @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
+    xml = File.read(SETTINGS["playlist"])
+    @playlist = PL2USB::Playlist.new(xml)
+
+    tracks = @playlist.tracks(:type=>"lossy")
+    @progress_bar = ProgressBar.create(:total=>tracks.count, :format=>"%c of %C |%B| %P\%")
 
     # start with the tracks that don't need compressing.
-    @playlist.tracks(:type=>"lossy").each do |id, track|
+    tracks.each do |track|
       options.verbose? ? @progress_bar.log(track.save) : track.save
       @progress_bar.increment
     end
 
-    # process the the tracks that need to be compressed.
-    @playlist.tracks(:type=>"lossless").each do |id, track|
-      options.verbose? ? @progress_bar.log(track.save) : track.save
-      @progress_bar.increment
-    end
+    ## process the the tracks that need to be compressed.
+    #@playlist.tracks(:type=>"lossless").each do |id, track|
+    #  options.verbose? ? @progress_bar.log(track.save) : track.save
+    #  @progress_bar.increment
+    #end
 
   end
 

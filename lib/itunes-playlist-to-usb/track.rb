@@ -66,11 +66,9 @@ module PL2USB
       else
         # just copy over
         FileUtils.mkdir_p(::File.dirname(destination.path))
-        FileUtils.cp(location, output_location)
+        FileUtils.cp(source.path, destination.path)
         return "copying #{id} because it's missing"
       end
-
-      true
     end
 
     private
