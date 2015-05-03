@@ -31,10 +31,6 @@ module PL2USB
       ::PL2USB::File.new(path, kind)
     end
 
-    def convert?
-      !SETTINGS["supported_codecs"].include?(@track.kind)
-    end
-
     private
     def extension
       f = ::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml")
@@ -42,7 +38,7 @@ module PL2USB
     end
 
     def kind
-      if convert?
+      if @track.convert?
         SETTINGS["supported_codecs"].first
       else
         @track.kind

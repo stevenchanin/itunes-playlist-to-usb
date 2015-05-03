@@ -53,6 +53,10 @@ RSpec.describe PL2USB::Track do
     it "should have correct destination path" do
       expect(track.destination.path).to eql "/tmp/test1_artist/[2015] test1_album/01-test1_title.mp3"
     end
+
+    it "should not convert" do
+      expect(track.convert?).to be false
+    end
   end
 
   context "alac" do
@@ -108,6 +112,10 @@ RSpec.describe PL2USB::Track do
 
     it "should have correct destination path" do
       expect(track.destination.path).to eql "/tmp/test2_artist/[2009] test2_album/02-test2_title.mp3"
+    end
+
+    it "should convert" do
+      expect(track.convert?).to be true
     end
   end
 
@@ -165,6 +173,11 @@ RSpec.describe PL2USB::Track do
     it "should have correct destination path" do
       expect(track.destination.path).to eql "/tmp/test3_artist/[1929] test3_album/01-test3_title.m4a"
     end
+
+    it "should not convert" do
+      expect(track.convert?).to be false
+    end
+
 
   end
 

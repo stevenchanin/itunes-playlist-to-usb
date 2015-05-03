@@ -34,10 +34,6 @@ RSpec.describe PL2USB::LibraryPath do
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%g/%a/[%y] %A/%n-%t.%e')
 
-    it "should convert" do
-      expect(library_path.convert?).to be true
-    end
-
     it "should have a file extension of m4a" do
       expect(library_path.file.extension).to eql "mp3"
     end

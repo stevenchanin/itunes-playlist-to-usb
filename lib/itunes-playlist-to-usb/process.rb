@@ -20,7 +20,7 @@ module PL2USB
       end
 
       make_destination_directory
-      @track.source.lossless? ? compress : copy
+      @track.convert? ? compress : copy
     end
 
     def source

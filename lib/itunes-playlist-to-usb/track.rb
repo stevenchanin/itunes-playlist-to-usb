@@ -37,6 +37,10 @@ module PL2USB
       )
     end
 
+    def convert?
+      !SETTINGS["supported_codecs"].include?(kind)
+    end
+
     def destination
       PL2USB::LibraryPath.new(self).file
     end
