@@ -1,49 +1,48 @@
 RSpec.describe PL2USB::LibraryPath do
+  original_directory_format = SETTINGS["library_directory_format"]
   track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
 
-  context "with format of '%a'" do
-    SETTINGS["library_directory_format"] = '%a'
-    library_path = PL2USB::LibraryPath.new(track)
+  context "with library_path of '%a'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%a/file.mp3')
 
-    it "should have dirname of" do
-      expect(library_path.dirname).to eql "Test1 Artist"
+    it "should have correct dirname" do
+      expect(library_path.dirname).to eql "/tmp/Test1 Artist"
+    end
+
+    it "should have correct basename" do
+      expect(library_path.basename).to eql "file.mp3"
     end
   end
 
-  context "with format of '%A'" do
-    SETTINGS["library_directory_format"] = '%A'
-    library_path = PL2USB::LibraryPath.new(track)
+  context "with library_path of '%A'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%A/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "Test1 Album"
+      expect(library_path.dirname).to eql "/tmp/Test1 Album"
     end
   end
 
-  context "with format of '%n'" do
-    SETTINGS["library_directory_format"] = '%n'
-    library_path = PL2USB::LibraryPath.new(track)
+  context "with library_path of '%n'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%n/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "01"
+      expect(library_path.dirname).to eql "/tmp/01"
     end
   end
 
-  context "with format of '%t'" do
-    SETTINGS["library_directory_format"] = '%t'
-    library_path = PL2USB::LibraryPath.new(track)
+  context "with library_path of '%t'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%t/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "Test1 Title"
+      expect(library_path.dirname).to eql "/tmp/Test1 Title"
     end
   end
 
-  context "with format of '%y'" do
-    SETTINGS["library_directory_format"] = '%y'
-    library_path = PL2USB::LibraryPath.new(track)
+  context "with library_path of '%y'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%y/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "2015"
+      expect(library_path.dirname).to eql "/tmp/2015"
     end
   end
-
 end

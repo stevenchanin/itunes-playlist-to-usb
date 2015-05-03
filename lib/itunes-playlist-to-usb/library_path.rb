@@ -1,11 +1,11 @@
 module PL2USB
   class LibraryPath
-    def initialize track
+    def initialize track, settings={:library_path => nil}
       @track = track
-      @format = SETTINGS["library_directory_format"]
+      @library_path = settings[:library_path] || SETTINGS["library_path"]
     end
 
-    def dirname
+    def path
       replacements = {
         "%A" => @track.album,
         "%a" => @track.artist,
@@ -14,7 +14,7 @@ module PL2USB
         "%y" => @track.year,
       }
 
-      dir = @format
+      dir = @library_path
       replacements.each do |key,replacement|
         dir.gsub!(/#{key}/, replacement.to_s)
       end
@@ -22,11 +22,12 @@ module PL2USB
     end
 
     def basename
-      @track.name.downcase.gsub(/[^a-z0-9]/, '_')
+      #@track.name.downcase.gsub(/[^a-z0-9]/, '_')
+      ::File.basename(path)
     end
 
-    def path
-      ::File.join(dirname, basename)
+    def dirname
+      ::File.dirname(path)
     end
   end
 end
