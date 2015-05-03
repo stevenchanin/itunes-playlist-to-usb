@@ -47,7 +47,3 @@ module PL2USB
     end
   end
 end
-
-
-
-
