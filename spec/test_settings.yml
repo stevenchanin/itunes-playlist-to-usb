@@ -1,5 +1,18 @@
+#playlist: /tmp/playlist.xml
+#output:
+#  codec: mp3
+#  encoding: mp3
+#  library_directory: /tmp/
+
+
+# You're playlist file that you exported from iTunes.
 playlist: /tmp/playlist.xml
-output:
-  codec: mp3
-  encoding: mp3
-  library_directory: /tmp/
+
+# The codecs that your mp3 player supports. The first is what your unsupported
+# files will be encoded to.
+supported_codecs:
+  - mp3
+  - aac
+
+# Where your processed files will be saved.
+library_directory: /tmp/

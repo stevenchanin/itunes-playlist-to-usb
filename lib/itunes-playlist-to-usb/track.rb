@@ -40,11 +40,11 @@ module PL2USB
     def destination
       # FIXME: refactor
       codecs = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))
-      extension = codecs[SETTINGS["output"]["encoding"]]["extension"]
+      extension = codecs[SETTINGS["supported_codecs"].first]["extension"]
       n = name.downcase.gsub(/[^a-z0-9]/, '_')
       PL2USB::File.new(
-        ::File.join(SETTINGS["output"]["library_directory"], genre, album, "#{track_number} #{n}.#{extension}"),
-        SETTINGS["output"]["encoding"]
+        ::File.join(SETTINGS["library_directory"], genre, album, "#{track_number} #{n}.#{extension}"),
+        SETTINGS["supported_codecs"].first
       )
     end
 
