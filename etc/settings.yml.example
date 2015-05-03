@@ -7,13 +7,13 @@ supported_codecs:
   - mp3
   - aac
 
-# Where your processed files will be saved.
-library_path: /path/to/library/
-
-# How to organise files within your library.
-#   %n    track number
-#   %a    artist
+# Where to save your files.
 #   %A    album
+#   %a    artist
+#   %e    file extension
+#   %g    genre
+#   %n    track number
 #   %t    song title
+#   %T    song title snake_cased
 #   %y    year
-library_directory_format: '%a/[%y] %A/'
+library_path: '/tmp/%g/%A/%n-%T.%e'
