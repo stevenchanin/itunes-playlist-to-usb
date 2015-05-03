@@ -10,6 +10,10 @@ RSpec.describe PL2USB::Track do
       expect(track.name).to eql "Test1 Title"
     end
 
+    it "should have correct snake_name" do
+      expect(track.snake_name).to eql "test1_title"
+    end
+
     it "should have correct artist" do
       expect(track.artist).to eql "Test1 Artist"
     end
