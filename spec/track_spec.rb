@@ -111,7 +111,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      expect(track.destination.path).to eql "/tmp/Test3 Artist/[2015] Test3 Album/02-test2_title.m4a"
+      expect(track.destination.path).to eql "/tmp/Test2 Artist/[2009] Test2 Album/02-test2_title.mp3"
     end
   end
 
@@ -167,8 +167,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      #byebug
-      expect(track.destination.path).to eql "/tmp/Test3 Artist/[2015] Test3 Album/03-test3_title.m4a"
+      expect(track.destination.path).to eql "/tmp/Test3 Artist/[1929] Test3 Album/01-test3_title.m4a"
     end
 
   end
