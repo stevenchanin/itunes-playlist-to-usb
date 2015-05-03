@@ -10,6 +10,7 @@ module PL2USB
         "%A" => @track.album,
         "%a" => @track.artist,
         "%n" => @track.track_number,
+        "%T" => @track.snake_name,
         "%t" => @track.name,
         "%y" => @track.year,
       }
