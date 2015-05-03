@@ -11,13 +11,12 @@ module PL2USB
 
     def path
       replacements = {
-        "%A" => @track.album,
-        "%T" => @track.snake_name,
-        "%a" => @track.artist,
+        "%A" => clean(@track.album),
+        "%a" => clean(@track.artist),
         "%e" => extension,
-        "%g" => @track.genre,
+        "%g" => clean(@track.genre),
         "%n" => @track.track_number,
-        "%t" => @track.name,
+        "%t" => clean(@track.name),
         "%y" => @track.year,
       }
 
@@ -48,6 +47,10 @@ module PL2USB
       else
         @track.kind
       end
+    end
+
+    def clean input
+      input.to_s.downcase.gsub(/[^a-z0-9]/, '_')
     end
   end
 end

@@ -30,10 +30,6 @@ module PL2USB
       @artwork_count = @playlist_track["Artwork Count"]
     end
 
-    def snake_name
-      name.downcase.gsub(/[^a-z0-9]/, '_')
-    end
-
     def source
       PL2USB::File.new(
         URI.decode(@playlist_track["Location"]).gsub(/^file:\/\//, ''),

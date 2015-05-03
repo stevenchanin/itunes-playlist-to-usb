@@ -16,4 +16,4 @@ supported_codecs:
 #   %t    song title
 #   %T    song title snake_cased
 #   %y    year
-library_path: '/tmp/%a/[%y] %A/%n-%T.%e'
+library_path: '/tmp/%a/[%y] %A/%n-%t.%e'
