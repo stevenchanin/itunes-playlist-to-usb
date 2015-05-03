@@ -46,6 +46,10 @@ RSpec.describe PL2USB::Track do
       expect(track.source).to be_a_kind_of PL2USB::File
     end
 
+    it "should have correct source path" do
+      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test1.mp3"
+    end
+
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
     end
@@ -98,10 +102,17 @@ RSpec.describe PL2USB::Track do
       expect(track.source).to be_a_kind_of PL2USB::File
     end
 
+    it "should have correct source path" do
+      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test2.m4a"
+    end
+
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
     end
 
+    it "should have correct destination path" do
+      expect(track.destination.path).to eql "/tmp/Test3 Artist/[2015] Test3 Album/02-test2_title.m4a"
+    end
   end
 
   context "aac" do
@@ -147,8 +158,17 @@ RSpec.describe PL2USB::Track do
       expect(track.source).to be_a_kind_of PL2USB::File
     end
 
+    it "should have correct source path" do
+      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test3.m4a"
+    end
+
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
+    end
+
+    it "should have correct destination path" do
+      #byebug
+      expect(track.destination.path).to eql "/tmp/Test3 Artist/[2015] Test3 Album/03-test3_title.m4a"
     end
 
   end
