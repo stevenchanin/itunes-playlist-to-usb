@@ -2,15 +2,23 @@ module PL2USB
   class LibraryPath
     def initialize track
       @track = track
+      @format = SETTINGS["library_directory_format"]
     end
 
     def dirname
-      outside_directory = SETTINGS["library_path"]
-      inside_directory = SETTINGS["library_directory_format"]
-      { "%y" => @track.year }.each do |key,replacement|
-        inside_directory.gsub!(/#{key}/, replacement.to_s)
+      replacements = {
+        "%A" => @track.album,
+        "%a" => @track.artist,
+        "%n" => @track.track_number,
+        "%t" => @track.name,
+        "%y" => @track.year,
+      }
+
+      dir = @format
+      replacements.each do |key,replacement|
+        dir.gsub!(/#{key}/, replacement.to_s)
       end
-      inside_directory
+      dir
     end
 
     def basename
