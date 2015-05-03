@@ -1,10 +1,3 @@
-#playlist: /tmp/playlist.xml
-#output:
-#  codec: mp3
-#  encoding: mp3
-#  library_directory: /tmp/
-
-
 # You're playlist file that you exported from iTunes.
 playlist: /tmp/playlist.xml
 
@@ -15,4 +8,12 @@ supported_codecs:
   - aac
 
 # Where your processed files will be saved.
-library_directory: /tmp/
+library_path: /tmp/
+
+# How to organise files within your library.
+#   %n    track number
+#   %a    artist
+#   %A    album
+#   %t    song title
+#   %y    year
+library_directory_format: '%a/[%y] %A/'

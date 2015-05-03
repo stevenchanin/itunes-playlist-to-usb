@@ -8,4 +8,12 @@ supported_codecs:
   - aac
 
 # Where your processed files will be saved.
-library_directory: /path/to/library/
+library_path: /path/to/library/
+
+# How to organise files within your library.
+#   %n    track number
+#   %a    artist
+#   %A    album
+#   %t    song title
+#   %y    year
+library_directory_format: '%a/[%y] %A/'

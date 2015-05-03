@@ -43,7 +43,7 @@ module PL2USB
       extension = codecs[SETTINGS["supported_codecs"].first]["extension"]
       n = name.downcase.gsub(/[^a-z0-9]/, '_')
       PL2USB::File.new(
-        ::File.join(SETTINGS["library_directory"], genre, album, "#{track_number} #{n}.#{extension}"),
+        ::File.join(SETTINGS["library_path"], genre, album, "#{track_number} #{n}.#{extension}"),
         SETTINGS["supported_codecs"].first
       )
     end
