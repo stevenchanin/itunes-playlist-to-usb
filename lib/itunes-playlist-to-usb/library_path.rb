@@ -10,25 +10,27 @@ module PL2USB
         "%A" => @track.album,
         "%T" => @track.snake_name,
         "%a" => @track.artist,
+        "%e" => extension,
         "%n" => @track.track_number,
         "%t" => @track.name,
         "%y" => @track.year,
       }
 
-      dir = @library_path
+      p = @library_path
       replacements.each do |key,replacement|
-        dir.gsub!(/#{key}/, replacement.to_s)
+        p.gsub!(/#{key}/, replacement.to_s)
       end
-      dir
+      p
     end
 
-    def basename
-      #@track.name.downcase.gsub(/[^a-z0-9]/, '_')
-      ::File.basename(path)
+    def file
+      ::PL2USB::File.new(path, SETTINGS["supported_codecs"].first)
     end
 
-    def dirname
-      ::File.dirname(path)
+    private
+    def extension
+      f = ::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml")
+      YAML.load_file(f)[@track.kind]["extension"]
     end
   end
 end

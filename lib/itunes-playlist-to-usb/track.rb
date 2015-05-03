@@ -42,15 +42,7 @@ module PL2USB
     end
 
     def destination
-      PL2USB::LibraryPath.new(self).path
-      # FIXME: refactor
-      codecs = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))
-      extension = codecs[SETTINGS["supported_codecs"].first]["extension"]
-      n = name.downcase.gsub(/[^a-z0-9]/, '_')
-      PL2USB::File.new(
-        ::File.join(SETTINGS["library_path"], genre, album, "#{track_number} #{n}.#{extension}"),
-        SETTINGS["supported_codecs"].first
-      )
+      PL2USB::LibraryPath.new(self).file
     end
 
     def track_number
@@ -59,16 +51,6 @@ module PL2USB
 
     def save
       PL2USB::Process.new(self).process
-    end
-
-    private
-    def clean_string(s, cutoff_at = nil)
-      unless s.is_a?(String)
-        s = 'Blank'
-      end
-      s = s[0, cutoff_at] if cutoff_at
-      s && s.gsub(/\/|\(|\)/, '_')
-      s.split.map(&:capitalize).join(" ")
     end
 
     def kind
@@ -82,6 +64,16 @@ module PL2USB
       else
         nil
       end
+    end
+
+    private
+    def clean_string(s, cutoff_at = nil)
+      unless s.is_a?(String)
+        s = 'Blank'
+      end
+      s = s[0, cutoff_at] if cutoff_at
+      s && s.gsub(/\/|\(|\)/, '_')
+      s.split.map(&:capitalize).join(" ")
     end
 
   end

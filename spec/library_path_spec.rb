@@ -6,11 +6,11 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%a/file.mp3')
 
     it "should have correct dirname" do
-      expect(library_path.dirname).to eql "/tmp/Test1 Artist"
+      expect(library_path.file.dirname).to eql "/tmp/Test1 Artist"
     end
 
     it "should have correct basename" do
-      expect(library_path.basename).to eql "file.mp3"
+      expect(library_path.file.basename).to eql "file.mp3"
     end
   end
 
@@ -18,7 +18,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%A/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "/tmp/Test1 Album"
+      expect(library_path.file.dirname).to eql "/tmp/Test1 Album"
     end
   end
 
@@ -26,7 +26,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%n/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "/tmp/01"
+      expect(library_path.file.dirname).to eql "/tmp/01"
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%t/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "/tmp/Test1 Title"
+      expect(library_path.file.dirname).to eql "/tmp/Test1 Title"
     end
   end
 
@@ -42,7 +42,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%a/%T')
 
     it "should have correct basename" do
-      expect(library_path.basename).to eql "test1_title"
+      expect(library_path.file.basename).to eql "test1_title"
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%y/file.mp3')
 
     it "should have dirname of" do
-      expect(library_path.dirname).to eql "/tmp/2015"
+      expect(library_path.file.dirname).to eql "/tmp/2015"
     end
   end
 end

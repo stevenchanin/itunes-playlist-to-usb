@@ -44,5 +44,13 @@ module PL2USB
       end
     end
 
+    def basename
+      ::File.basename(path)
+    end
+
+    def dirname
+      ::File.dirname(path)
+    end
+
   end
 end

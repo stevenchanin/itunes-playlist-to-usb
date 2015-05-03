@@ -14,4 +14,4 @@ supported_codecs:
 #   %t    song title
 #   %T    song title with substituted charactors
 #   %y    year
-library_path: '/tmp/%a/[%y] %A/%n-%T'
+library_path: '/tmp/%a/[%y] %A/%n-%T.%e'

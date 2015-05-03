@@ -49,6 +49,10 @@ RSpec.describe PL2USB::Track do
     it "should have a PL2USB::File object as destination" do
       expect(track.destination).to be_a_kind_of PL2USB::File
     end
+
+    it "should have correct destination path" do
+      expect(track.destination.path).to eql "/tmp/Test1 Artist/[2015] Test1 Album/01-test1_title.mp3"
+    end
   end
 
   context "alac" do
