@@ -11,7 +11,7 @@ settings_paths = [
 ]
 
 settings_paths.each do |s|
-  break if defined?(s)
+  break if defined?(SETTINGS)
   SETTINGS = YAML.load_file(s) if File.exist? s
 end
 ###############################################################################
