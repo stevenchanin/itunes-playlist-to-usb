@@ -1,6 +1,5 @@
 RSpec.describe PL2USB::LibraryPath do
   context "with an mp3 and" do
-    original_directory_format = SETTINGS["library_directory_format"]
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
 
     context "with library_path of '%a'" do
@@ -65,7 +64,6 @@ RSpec.describe PL2USB::LibraryPath do
   end
 
   context "with an aac and" do
-    original_directory_format = SETTINGS["library_directory_format"]
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["6087"])
 
     context "with library_path of '%a'" do
