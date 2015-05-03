@@ -10,10 +10,9 @@ module PL2USB
     def initialize path, kind
       @path = path
       @kind = kind
-      codec_info = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))[@kind]
-      @codec = @codec_info["codec"]
-      @extension = @codec_info["extension"]
-      @lossless = @codec_info["lossless"]
+      @codec = CODECS[@kind]["codec"]
+      @extension = CODECS[@kind]["extension"]
+      @lossless = CODECS[@kind]["lossless"]
     end
 
     def lossless?

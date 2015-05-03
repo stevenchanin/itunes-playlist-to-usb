@@ -13,7 +13,7 @@ module PL2USB
       replacements = {
         "%A" => clean(@track.album),
         "%a" => clean(@track.artist),
-        "%e" => extension,
+        "%e" => CODECS[kind]["extension"],
         "%g" => clean(@track.genre),
         "%n" => @track.track_number,
         "%t" => clean(@track.name),
@@ -32,11 +32,6 @@ module PL2USB
     end
 
     private
-    def extension
-      f = ::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml")
-      YAML.load_file(f)[kind]["extension"]
-    end
-
     def kind
       if @track.convert?
         SETTINGS["supported_codecs"].first
