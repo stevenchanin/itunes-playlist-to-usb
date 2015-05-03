@@ -38,6 +38,7 @@ module PL2USB
     end
 
     def destination
+      PL2USB::LibraryPath.new(self).path
       # FIXME: refactor
       codecs = YAML.load_file(::File.join(::File.dirname(__FILE__), "../../etc/codecs.yml"))
       extension = codecs[SETTINGS["supported_codecs"].first]["extension"]
