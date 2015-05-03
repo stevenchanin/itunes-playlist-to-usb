@@ -12,11 +12,11 @@ module PL2USB
 
     def process
       unless @track.source.exist?
-        return "skipping #{id} because it's source file is gone!"
+        return "skipping #{@track.id} because it's source file is gone!"
       end
 
       if @track.destination.exist?
-        return "skipping #{id} because it already exists"
+        return "skipping #{@track.id} because it already exists"
       end
 
       make_destination_directory
