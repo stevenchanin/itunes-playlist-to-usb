@@ -13,12 +13,7 @@ module PL2USB
     attr_reader :artwork_count
 
     def initialize playlist_track
-      if playlist_track.kind_of? Array
-        @playlist_track = playlist_track.last
-      else
-        @playlist_track = playlist_track
-      end
-
+      @playlist_track = playlist_track
       @id = @playlist_track["Track ID"]
       @name = clean_string(@playlist_track["Name"])
       @artist = clean_string(@playlist_track["Artist"])
