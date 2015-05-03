@@ -53,4 +53,12 @@ RSpec.describe PL2USB::LibraryPath do
       expect(library_path.file.dirname).to eql "/tmp/2015"
     end
   end
+
+  context "with library_path of '%g'" do
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/%g/file.mp3')
+
+    it "should have dirname of" do
+      expect(library_path.file.dirname).to eql "/tmp/Test1 Genre"
+    end
+  end
 end

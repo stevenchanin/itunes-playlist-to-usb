@@ -8,10 +8,12 @@ supported_codecs:
   - aac
 
 # Where to save your files.
-#   %n    track number
-#   %a    artist
 #   %A    album
+#   %a    artist
+#   %e    file extension
+#   %g    genre
+#   %n    track number
 #   %t    song title
-#   %T    song title with substituted charactors
+#   %T    song title snake_cased
 #   %y    year
 library_path: '/tmp/%a/[%y] %A/%n-%T.%e'
