@@ -16,7 +16,9 @@ settings_paths.each do |s|
   SETTINGS = YAML.load_file(s) if File.exist? s
 end
 
-CODECS = YAML.load_file(File.join(base_dir, "etc/codecs.yml")) unless defined?(CODECS)
+unless defined?(CODECS)
+  CODECS = YAML.load_file(File.join(base_dir, "etc/codecs.yml"))
+end
 ###############################################################################
 
 require 'process'
