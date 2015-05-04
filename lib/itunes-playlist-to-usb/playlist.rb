@@ -5,6 +5,7 @@ module PL2USB
     attr_reader :tracks
 
     def initialize xml
+      PROGRESS_BAR.debug_log("Parsing the playlist file")
       @tracks = Plist::parse_xml(xml)["Tracks"]
       @tracks = @tracks.map{|id,data| Track.new(data) }
     end

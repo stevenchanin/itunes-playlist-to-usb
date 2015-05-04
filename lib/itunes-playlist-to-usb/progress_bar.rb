@@ -33,7 +33,7 @@ module PL2USB
       @progress_bar.log(string) if verbose
     end
 
-    def debug string
+    def debug_log string
       @progress_bar.log(string) if verbose && debug
     end
   end
