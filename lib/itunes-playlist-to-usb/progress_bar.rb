@@ -8,13 +8,18 @@ module PL2USB
     def initialize options={:verbose=>true, :debug=>false}
       @debug = options[:debug]
       @verbose = options[:verbose]
+      if verbose
+        @progress_bar ||= ::ProgressBar.create
+        @progress_bar.format = "%c of %C |%B| %P\%"
+      end
     end
 
     def verbose= v
       @verbose = v
-      return @verbose unless @verbose
-      @progress_bar ||= ::ProgressBar.create
-      @progress_bar.format = "%c of %C |%B| %P\%"
+      if @verbose
+        @progress_bar ||= ::ProgressBar.create
+        @progress_bar.format = "%c of %C |%B| %P\%"
+      end
     end
 
     def increment
@@ -30,11 +35,21 @@ module PL2USB
     end
 
     def log string
-      @progress_bar.log(string) if verbose
+      if verbose
+        @progress_bar.log(string)
+        true
+      else
+        false
+      end
     end
 
     def debug_log string
-      @progress_bar.log(string) if verbose && debug
+      if verbose && debug
+        @progress_bar.log(string)
+        true
+      else
+        false
+      end
     end
   end
 end
