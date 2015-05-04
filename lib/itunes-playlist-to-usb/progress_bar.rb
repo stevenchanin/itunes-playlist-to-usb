@@ -6,7 +6,7 @@ module PL2USB
     attr_reader   :verbose
 
     def initialize options={:verbose=>false, :debug=>false}
-      @debug = options[:debug]
+      @debug = options[:debug] || false
       @verbose = options[:verbose]
       if verbose
         @progress_bar ||= ::ProgressBar.create
@@ -44,12 +44,8 @@ module PL2USB
     end
 
     def debug_log string
-      if verbose && debug
-        @progress_bar.log(string)
-        true
-      else
-        false
-      end
+      puts string if debug
+      debug
     end
   end
 end

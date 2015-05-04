@@ -66,8 +66,8 @@ RSpec.describe PL2USB::ProgressBar do
       expect(progress_bar.log "str").to be false
     end
 
-    it "should not debug_log" do
-      expect(progress_bar.debug_log "debug").to be false
+    it "should debug_log" do
+      expect(progress_bar.debug_log "debug").to be true
     end
   end
 
