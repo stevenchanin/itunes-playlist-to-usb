@@ -42,12 +42,11 @@ class PlaylistExporter < Thor
       PROGRESS_BAR.increment
     end
   end
-
 end
-
 
 begin
   PlaylistExporter.start
 rescue
   PROGRESS_BAR.log("Exiting...")
+  PROGRESS_BAR.clear if PROGRESS_BAR.verbose
 end

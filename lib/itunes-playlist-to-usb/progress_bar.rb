@@ -49,5 +49,9 @@ module PL2USB
       @progress_bar.refresh(:force=>true) if verbose
       debug
     end
+
+    def clear
+      @progress_bar.clear
+    end
   end
 end
