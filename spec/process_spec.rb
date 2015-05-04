@@ -4,8 +4,15 @@ RSpec.describe PL2USB::Process do
     process = PL2USB::Process.new(track)
 
     it "should copy" do
-      expect(process.process).to be true
+      expect(process.copy).to be true
       expect(::File.exist?(track.destination.path)).to be true
+      expect(::File.symlink?(track.destination.path)).to be false
+      ::FileUtils::rm_f(track.destination.path)
+    end
+
+    it "should symlink" do
+      expect(process.symlink).to be true
+      expect(::File.symlink?(track.destination.path)).to be true
       ::FileUtils::rm_f(track.destination.path)
     end
   end

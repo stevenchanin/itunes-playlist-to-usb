@@ -16,3 +16,6 @@ supported_codecs:
 #   %t    song title
 #   %y    year
 library_path: '/tmp/library/%a/[%y] %A/%n-%t.%e'
+
+# Instead of copying files, create symlinks.
+symlink_for_copy: true
