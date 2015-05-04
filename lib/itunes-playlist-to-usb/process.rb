@@ -12,11 +12,13 @@ module PL2USB
 
     def process
       unless @track.source.exist?
-        return "skipping #{@track.id} because it's source file is gone!"
+        PROGRESS_BAR.debug_log("skipping #{@track.id} because it's source file is gone!")
+        return false
       end
 
       if @track.destination.exist?
-        return "skipping #{@track.id} because it already exists"
+        PROGRESS_BAR.debug_log("skipping #{@track.id} because it already exists")
+        return false
       end
 
       make_destination_directory
@@ -33,13 +35,16 @@ module PL2USB
 
     private
     def compress
+      PROGRESS_BAR.debug_log("compressing #{@track.id}")
       cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
       system(cmd)
+      $?.success?
     end
 
     def copy
+      PROGRESS_BAR.debug_log("copying #{@track.id}")
       ::FileUtils.cp(@track.source.path, @track.destination.path)
-      true
+      ::File.exist?(@track.destination.path)
     end
 
     def make_destination_directory

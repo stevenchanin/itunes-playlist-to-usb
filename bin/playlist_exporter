@@ -17,7 +17,7 @@ class PlaylistExporter < Thor
     PROGRESS_BAR.total = tracks.count
 
     tracks.each do |track|
-      PROGRESS_BAR.log(track.save)
+      track.save
       PROGRESS_BAR.increment
     end
   end
