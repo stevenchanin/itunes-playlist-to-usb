@@ -177,8 +177,22 @@ RSpec.describe PL2USB::Track do
     it "should not convert" do
       expect(track.convert?).to be false
     end
+  end
 
 
+  context "when destination has invalid length" do
+    track1 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
+    track2 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
+
+    it "should find that destination file exists" do
+      FileUtils::mkdir_p(track1.destination.dirname)
+      FileUtils::cp(track2.source.path, track1.destination.path)
+      expect(track1.destination.exist?).to be true
+    end
+
+    it "should not be valid" do
+      expect(track1.valid?).to be false
+    end
   end
 
 end

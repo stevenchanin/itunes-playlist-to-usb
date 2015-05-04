@@ -40,6 +40,10 @@ module PL2USB
       PL2USB::LibraryPath.new(self).file
     end
 
+    def valid?
+      destination.length == length
+    end
+
     def track_number
       "%02d" % (@playlist_track["Track Number"] || 0)
     end
