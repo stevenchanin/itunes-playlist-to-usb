@@ -44,7 +44,9 @@ module PL2USB
     end
 
     def debug_log string
-      puts string if debug
+      @progress_bar.clear if verbose
+      $stdout.puts string if debug
+      @progress_bar.refresh(:force=>true) if verbose
       debug
     end
   end
