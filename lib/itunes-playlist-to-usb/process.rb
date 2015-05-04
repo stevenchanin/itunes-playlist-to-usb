@@ -52,7 +52,12 @@ module PL2USB
       PROGRESS_BAR.debug_log("compressing #{@track.source.path} to #{@track.destination.path}.")
       make_destination_directory
       cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
-      system(cmd)
+      begin
+        system(cmd)
+      rescue Interrupt => e
+        ::File.unlink(@track.destination.path)
+      end
+
       $?.success?
     end
 
