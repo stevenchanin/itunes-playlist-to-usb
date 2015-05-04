@@ -20,7 +20,7 @@ module PL2USB
       @album = clean_string(@playlist_track["Album"])
       @genre = clean_string(@playlist_track["Genre"])
       @kind = @playlist_track["Kind"]
-      @length = @playlist_track["Total Time"]
+      @length = @playlist_track["Total Time"] / 1000
       @year = @playlist_track["Year"]
       @artwork_count = @playlist_track["Artwork Count"]
     end
@@ -52,7 +52,7 @@ module PL2USB
       end
 
       if destination.length != length
-        PROGRESS_BAR.debug_log("#{id} is of incorrect length")
+        PROGRESS_BAR.debug_log("#{id} is #{destination.length} seconds instead of #{length} seconds.")
         return false
       end
       true

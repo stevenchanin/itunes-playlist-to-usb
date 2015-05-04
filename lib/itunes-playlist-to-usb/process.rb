@@ -11,18 +11,15 @@ module PL2USB
     end
 
     def process
-      unless @track.source.exist?
-        PROGRESS_BAR.debug_log("skipping #{@track.id} because it's source file is gone!")
-        return false
-      end
+      unless @track.valid?
+        if @track.destination.exist?
+          PROGRESS_BAR.debug_log("deleting destination because it's invalid")
+          ::File.unlink(@track.destination.path)
+        end
 
-      if @track.destination.exist?
-        PROGRESS_BAR.debug_log("skipping #{@track.id} because it already exists")
-        return false
+        make_destination_directory
+        @track.convert? ? compress : copy
       end
-
-      make_destination_directory
-      @track.convert? ? compress : copy
     end
 
     def source
@@ -35,20 +32,24 @@ module PL2USB
 
     private
     def compress
-      PROGRESS_BAR.debug_log("compressing #{@track.id}")
+      PROGRESS_BAR.debug_log("compressing #{@track.source.path} to #{@track.destination.path}.")
       cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
       system(cmd)
       $?.success?
     end
 
     def copy
-      PROGRESS_BAR.debug_log("copying #{@track.id}")
+      PROGRESS_BAR.debug_log("copying #{@track.source.path} to #{@track.destination.path}.")
       ::FileUtils.cp(@track.source.path, @track.destination.path)
       ::File.exist?(@track.destination.path)
     end
 
     def make_destination_directory
-      ::FileUtils.mkdir_p(::File.dirname(@track.destination.path))
+      dir = ::File.dirname(@track.destination.path)
+      unless ::File.directory? dir
+        PROGRESS_BAR.debug_log("creating directory #{dir}")
+        ::FileUtils.mkdir_p()
+      end
     end
   end
 end
