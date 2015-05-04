@@ -15,4 +15,4 @@ supported_codecs:
 #   %n    track number
 #   %t    song title
 #   %y    year
-library_path: '/tmp/%a/[%y] %A/%n-%t.%e'
+library_path: '/tmp/library/%a/[%y] %A/%n-%t.%e'

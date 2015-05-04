@@ -51,7 +51,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      expect(track.destination.path).to eql "/tmp/test1_artist/[2015] test1_album/01-test1_title.mp3"
+      expect(track.destination.path).to eql "/tmp/library/test1_artist/[2015] test1_album/01-test1_title.mp3"
     end
 
     it "should not convert" do
@@ -111,7 +111,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      expect(track.destination.path).to eql "/tmp/test2_artist/[2009] test2_album/02-test2_title.mp3"
+      expect(track.destination.path).to eql "/tmp/library/test2_artist/[2009] test2_album/02-test2_title.mp3"
     end
 
     it "should convert" do
@@ -171,7 +171,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      expect(track.destination.path).to eql "/tmp/test3_artist/[1929] test3_album/01-test3_title.m4a"
+      expect(track.destination.path).to eql "/tmp/library/test3_artist/[1929] test3_album/01-test3_title.m4a"
     end
 
     it "should not convert" do
