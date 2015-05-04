@@ -5,7 +5,7 @@ module PL2USB
     attr_accessor :debug
     attr_reader   :verbose
 
-    def initialize options={:verbose=>true, :debug=>false}
+    def initialize options={:verbose=>false, :debug=>false}
       @debug = options[:debug]
       @verbose = options[:verbose]
       if verbose
