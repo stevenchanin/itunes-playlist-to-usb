@@ -41,7 +41,21 @@ module PL2USB
     end
 
     def valid?
-      destination.length == length
+      unless source.exist?
+        PROGRESS_BAR.debug_log("#{id} has missing source file")
+        return false
+      end
+
+      unless destination.exist?
+        PROGRESS_BAR.debug_log("#{id} has not been added to library")
+        return false
+      end
+
+      if destination.length != length
+        PROGRESS_BAR.debug_log("#{id} is of incorrect length")
+        return false
+      end
+      true
     end
 
     def track_number

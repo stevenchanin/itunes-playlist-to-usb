@@ -4,28 +4,33 @@ require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 class PlaylistExporter < Thor
   desc "process", "process playlist"
-  method_option :verbose, :type => :boolean, :default => true, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "don't show the progress bar."
   method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debugging"
   def process
-    PROGRESS_BAR.verbose = options.verbose?
+    PROGRESS_BAR.verbose = !options.quiet?
     PROGRESS_BAR.debug = options.debug?
 
     xml = File.read(SETTINGS["playlist"])
     @playlist = PL2USB::Playlist.new(xml)
 
-    tracks = @playlist.tracks(:type=>"lossless")
-    PROGRESS_BAR.total = tracks.count
+    PROGRESS_BAR.total = @playlist.tracks.count
 
-    tracks.each do |track|
+    @playlist.tracks(:type=>"lossy").each do |track|
+      track.save
+      PROGRESS_BAR.increment
+    end
+
+    @playlist.tracks(:type=>"lossless").each do |track|
       track.save
       PROGRESS_BAR.increment
     end
   end
 
   desc "verify", "validate files in library"
-  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debug mode"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debug mode."
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "don't show the progress bar."
   def verify
-    PROGRESS_BAR.verbose = true
+    PROGRESS_BAR.verbose = !options.quiet?
     PROGRESS_BAR.debug = options.debug?
 
     @playlist = PL2USB::Playlist.new(File.read(SETTINGS["playlist"]))
@@ -33,8 +38,7 @@ class PlaylistExporter < Thor
 
     # start with the tracks that don't need compressing.
     @playlist.tracks.each do |track|
-      PROGRESS_BAR.log("#{track.id} needs to be imported") unless track.destination.exist?
-      PROGRESS_BAR.log("#{track.id} has no source file") unless track.source.exist?
+      track.valid?
       PROGRESS_BAR.increment
     end
   end
