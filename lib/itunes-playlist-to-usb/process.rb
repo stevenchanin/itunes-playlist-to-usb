@@ -48,7 +48,7 @@ module PL2USB
       dir = ::File.dirname(@track.destination.path)
       unless ::File.directory? dir
         PROGRESS_BAR.debug_log("creating directory #{dir}")
-        ::FileUtils.mkdir_p()
+        ::FileUtils.mkdir_p(dir)
       end
     end
   end

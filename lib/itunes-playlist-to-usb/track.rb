@@ -51,7 +51,7 @@ module PL2USB
         return false
       end
 
-      if destination.length != length
+      if (length - destination.length) > 1
         PROGRESS_BAR.debug_log("#{id} is #{destination.length} seconds instead of #{length} seconds.")
         return false
       end

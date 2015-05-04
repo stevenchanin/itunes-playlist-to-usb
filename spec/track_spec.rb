@@ -143,7 +143,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct length" do
-      expect(track.length).to eql 189866
+      expect(track.length).to eql 189
     end
 
     it "should have correct track_number" do
@@ -181,8 +181,8 @@ RSpec.describe PL2USB::Track do
 
 
   context "when destination has invalid length" do
-    track1 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
-    track2 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
+    track1 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
+    track2 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["6087"])
 
     it "should find that destination file exists" do
       FileUtils::mkdir_p(track1.destination.dirname)
