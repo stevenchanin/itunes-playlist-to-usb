@@ -26,3 +26,6 @@ require 'playlist'
 require 'track'
 require 'file'
 require 'library_path'
+require 'progress_bar'
+
+PROGRESS_BAR = PL2USB::ProgressBar.new(:verbose=>false, :debug=>false)

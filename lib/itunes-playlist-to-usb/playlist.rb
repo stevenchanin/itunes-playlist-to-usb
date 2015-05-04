@@ -6,7 +6,6 @@ module PL2USB
 
     def initialize xml
       @tracks = Plist::parse_xml(xml)["Tracks"]
-      puts "collecting track objects"
       @tracks = @tracks.map{|id,data| Track.new(data) }
     end
 

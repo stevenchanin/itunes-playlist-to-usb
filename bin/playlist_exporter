@@ -1,36 +1,39 @@
 #!/usr/bin/env ruby
 require 'thor'
-require 'ruby-progressbar'
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 class PlaylistExporter < Thor
   desc "process", "process playlist"
-  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
+  method_option :verbose, :type => :boolean, :default => true, :aliases => "-v", :desc => "running in verbose mode will also show each file as it's copied"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debugging"
   def process
     xml = File.read(SETTINGS["playlist"])
     @playlist = PL2USB::Playlist.new(xml)
 
     tracks = @playlist.tracks(:type=>"lossless")
-    @progress_bar = ProgressBar.create(:total=>tracks.count, :format=>"%c of %C |%B| %P\%")
+    PROGRESS_BAR.verbose = options.verbose?
+    PROGRESS_BAR.debug = options.debug?
+    PROGRESS_BAR.total = tracks.count
 
     tracks.each do |track|
-      options.verbose? ? @progress_bar.log(track.save) : track.save
-      @progress_bar.increment
+      PROGRESS_BAR.log(track.save)
+      PROGRESS_BAR.increment
     end
-
   end
 
   desc "verify", "validate files in library"
-  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debug mode"
   def verify
     @playlist = PL2USB::Playlist.new(File.read(SETTINGS["playlist"]))
-    @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
+    PROGRESS_BAR.verbose = true
+    PROGRESS_BAR.debug = options.debug?
+    PROGRESS_BAR.total = @playlist.tracks.count
 
     # start with the tracks that don't need compressing.
     @playlist.tracks.each do |track|
-      @progress_bar.log("#{track.id} needs to be imported") unless track.destination.exist?
-      @progress_bar.log("#{track.id} has no source file") unless track.source.exist?
-      @progress_bar.increment
+      PROGRESS_BAR.log("#{track.id} needs to be imported") unless track.destination.exist?
+      PROGRESS_BAR.log("#{track.id} has no source file") unless track.source.exist?
+      PROGRESS_BAR.increment
     end
   end
 
