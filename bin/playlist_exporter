@@ -21,15 +21,15 @@ class PlaylistExporter < Thor
   end
 
   desc "verify", "validate files in library"
-  option :verbose, :type => :boolean, :default => false, :aliases => "-v"
+  method_option :verbose, :type => :boolean, :default => false, :aliases => "-v"
   def verify
-    @playlist = PL2USB::Playlist.new
+    @playlist = PL2USB::Playlist.new(File.read(SETTINGS["playlist"]))
     @progress_bar = ProgressBar.create(:total=>@playlist.tracks.count, :format=>"%c of %C |%B| %P\%")
 
     # start with the tracks that don't need compressing.
-    @playlist.tracks.each do |id, track|
-      @progress_bar.log("#{track.id} needs to be imported") unless track.exist?
-      @progress_bar.log("#{track.id} has no source file") unless track.source_exist?
+    @playlist.tracks.each do |track|
+      @progress_bar.log("#{track.id} needs to be imported") unless track.destination.exist?
+      @progress_bar.log("#{track.id} has no source file") unless track.source.exist?
       @progress_bar.increment
     end
   end
