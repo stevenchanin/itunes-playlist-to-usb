@@ -3,8 +3,8 @@ require 'thor'
 require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
 
 class PlaylistExporter < Thor
-  desc "process", "process playlist"
-  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "don't show the progress bar."
+  desc "process", "process the playlist file"
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "hide the progress bar"
   method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debugging"
   def process
     PROGRESS_BAR.verbose = !options.quiet?
@@ -26,9 +26,9 @@ class PlaylistExporter < Thor
     end
   end
 
-  desc "verify", "validate files in library"
+  desc "verify", "verify the files files in library are valid"
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "hide the progress bar"
   method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debug mode."
-  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "don't show the progress bar."
   def verify
     PROGRESS_BAR.verbose = !options.quiet?
     PROGRESS_BAR.debug = options.debug?

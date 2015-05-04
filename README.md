@@ -9,7 +9,7 @@ The first problem was that with a lot of music, I find it helpful to organize it
 
 The second problem I ran into was that what ends up in that folder is a copy of the file where the name is whatever the underlying filename was originally created as, but that often includes all kinds of other information (junk) depending on what software was used to rip the song. Any cleanup you've done in iTunes to improve the name (or fix other meta data) is ignored.  You just get the original file name.
 
-## Quick Usage
+## Quick Setup
 
 ```bash
 bundle install
@@ -17,7 +17,7 @@ cp etc/settings.yml.example etc/settings.yml && $EDITOR etc/settings.yml
 bin/playlist_exporter process
 ```
 
-## Usage
+## Setup
 
 I tend to run ruby under RVM (https://rvm.io/) which installs bundler by default. If you don't have bundler installed, you will need to install it first
 
@@ -53,13 +53,23 @@ bin/playlist_exporter process
 if you ask for help from playlist_exporter, it will show you the options it accepts:
 
 ~~~~
-bin/playlist_exporter help process
-
 Usage:
-  playlist_exporter.rb process
+  playlist_exporter process
 
 Options:
-  -v, [--verbose]  # running in verbose mode will also show each file as it's copied
-  -d, [--debug]    # in debug mode files will not actually be copied
-  -f, [--force]    # normally, copying a file is skipped if a file with the same name and size already exists in the destination. Force mode always copies.
+  -q, [--quiet], [--no-quiet]  # hide the progress bar
+  -d, [--debug], [--no-debug]  # enable debugging
+
+process the playlist file
+~~~~
+
+~~~~
+Usage:
+  playlist_exporter verify
+
+Options:
+  -q, [--quiet], [--no-quiet]  # hide the progress bar
+  -d, [--debug], [--no-debug]  # enable debug mode.
+
+verify the files files in library are valid
 ~~~~
