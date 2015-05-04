@@ -45,4 +45,9 @@ class PlaylistExporter < Thor
 
 end
 
-PlaylistExporter.start
+
+begin
+  PlaylistExporter.start
+rescue
+  PROGRESS_BAR.log("Exiting...")
+end
