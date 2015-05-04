@@ -179,7 +179,6 @@ RSpec.describe PL2USB::Track do
     end
   end
 
-
   context "when destination has invalid length" do
     track1 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["2261"])
     track2 = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["6087"])
