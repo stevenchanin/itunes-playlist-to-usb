@@ -1,13 +1,13 @@
-# You're playlist file that you exported from iTunes.
+# Your playlist file that you exported from iTunes.
 playlist: /path/to/your/playlist.xml
 
-# The codecs that your mp3 player supports. The first is what your unsupported
-# files will be encoded to.
+# The codecs that your mp3 player supports. Files will be encoded into the
+# format listed first.
 supported_codecs:
   - mp3
   - aac
 
-# Where to save your files.
+# Where to store your destination library.
 #   %A    album
 #   %a    artist
 #   %e    file extension
@@ -17,5 +17,7 @@ supported_codecs:
 #   %y    year
 library_path: '/tmp/%g/%A/%n-%t.%e'
 
-# Instead of copying files, create symlinks.
+# Instead of copying files, create symlinks. This is faster but only useful
+# when your library_path isn't the actual media (like a usb stick) you will be
+# playing your music from.
 symlink_for_copy: false
