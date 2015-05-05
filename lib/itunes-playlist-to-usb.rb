@@ -27,5 +27,6 @@ require 'track'
 require 'file'
 require 'library_path'
 require 'progress_bar'
+require 'file_manager'
 
 PROGRESS_BAR = PL2USB::ProgressBar.new(:verbose=>false, :debug=>false)
