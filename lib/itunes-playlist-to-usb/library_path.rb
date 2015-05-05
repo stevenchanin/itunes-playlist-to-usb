@@ -42,12 +42,12 @@ module PL2USB
 
     def clean input
       input.to_s.downcase!
-      input.gsub!(/[\.,']/, '')         # strip punctuation
-      input.gsub!(/&/, 'and')           # expand &
-      input.gsub!(/[^a-z0-9\[\]]/, '_') # replace non_alphanumeric
-      input.gsub!(/_+/, '_')            # remove double underscores.
-      input.gsub!(/^_?/, '')            # must not start with underscores
-      input.gsub!(/_?$/, '')            # must not end with underscores
+      input.gsub!(/[\.,']/, '')             # strip punctuation
+      input.gsub!(/&/, 'and')               # expand &
+      input.gsub!(/[^[:alnum:]\[\]]/, '_')  # replace non_alphanumeric
+      input.gsub!(/_+/, '_')                # remove double underscores.
+      input.gsub!(/^_?/, '')                # must not start with underscores
+      input.gsub!(/_?$/, '')                # must not end with underscores
     end
   end
 end
