@@ -71,7 +71,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct artist" do
-      expect(track.artist).to eql "Test2 Artist"
+      expect(track.artist).to eql "Test2 Album Artist"
     end
 
     it "should have correct album" do
@@ -111,7 +111,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct destination path" do
-      expect(track.destination.path).to eql "/tmp/library/test2_artist/[2009] test2_album/02-test2_title.mp3"
+      expect(track.destination.path).to eql "/tmp/library/test2_album_artist/[2009] test2_album/02-test2_title.mp3"
     end
 
     it "should convert" do

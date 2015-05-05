@@ -16,7 +16,7 @@ module PL2USB
       @playlist_track = playlist_track
       @id = @playlist_track["Track ID"]
       @name = clean_string(@playlist_track["Name"])
-      @artist = clean_string(@playlist_track["Artist"])
+      @artist = clean_string(@playlist_track["Album Artist"] || @playlist_track["Artist"])
       @album = clean_string(@playlist_track["Album"])
       @genre = clean_string(@playlist_track["Genre"])
       @kind = @playlist_track["Kind"]

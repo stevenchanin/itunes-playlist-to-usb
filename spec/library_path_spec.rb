@@ -26,7 +26,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(alac_track)
 
     it "should have correct basename" do
-      expect(library_path.file.path).to eql "/tmp/library/test2_artist/[2009] test2_album/02-test2_title.mp3"
+      expect(library_path.file.path).to eql "/tmp/library/test2_album_artist/[2009] test2_album/02-test2_title.mp3"
     end
   end
 
@@ -39,7 +39,7 @@ RSpec.describe PL2USB::LibraryPath do
     end
 
     it "should have correct basename" do
-      expect(library_path.file.path).to eql "/tmp/library/test2_genre/test2_artist/[2009] test2_album/02-test2_title.mp3"
+      expect(library_path.file.path).to eql "/tmp/library/test2_genre/test2_album_artist/[2009] test2_album/02-test2_title.mp3"
     end
   end
 
