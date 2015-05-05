@@ -70,14 +70,10 @@ module PL2USB
 
     def kind
       case @kind
-      when "MPEG audio file"
-        "mp3"
-      when "Apple Lossless audio file"
-        "alac"
-      when "AAC audio file"
-        "aac"
-      else
-        nil
+      when "MPEG audio file" then "mp3"
+      when "Apple Lossless audio file" then "alac"
+      when "AAC audio file" then "aac"
+      else nil
       end
     end
 
