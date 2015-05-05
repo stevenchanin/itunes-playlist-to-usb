@@ -43,7 +43,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct source path" do
-      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test1.mp3"
+      expect(track.source.path).to eql ::File.join(::File.dirname(__FILE__), "test_files/test1.mp3")
     end
 
     it "should have a PL2USB::File object as destination" do
@@ -103,7 +103,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct source path" do
-      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test2.m4a"
+      expect(track.source.path).to eql ::File.join(::File.dirname(__FILE__), "test_files/test2.m4a")
     end
 
     it "should have a PL2USB::File object as destination" do
@@ -163,7 +163,7 @@ RSpec.describe PL2USB::Track do
     end
 
     it "should have correct source path" do
-      expect(track.source.path).to eql "/Users/jonhiggs/Repos/itunes-playlist-to-usb/spec/test_files/test3.m4a"
+      expect(track.source.path).to eql ::File.join(::File.dirname(__FILE__), "test_files/test3.m4a")
     end
 
     it "should have a PL2USB::File object as destination" do
