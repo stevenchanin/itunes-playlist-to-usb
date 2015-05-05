@@ -35,21 +35,21 @@ module PL2USB
 
     def copy
       make_destination_directory
-      PROGRESS_BAR.debug_log("copying #{@track.source.path} to #{@track.destination.path}.")
+      PROGRESS_BAR.debug_log("copying '#{@track.source.path}' to '#{@track.destination.path}'.")
       ::FileUtils.cp(@track.source.path, @track.destination.path)
       ::File.exist?(@track.destination.path)
     end
 
     def symlink
       make_destination_directory
-      PROGRESS_BAR.debug_log("symlinking #{@track.source.path} to #{@track.destination.path}.")
+      PROGRESS_BAR.debug_log("symlinking '#{@track.source.path}' to '#{@track.destination.path}'.")
       ::FileUtils.ln_s(@track.source.path, @track.destination.path)
       ::File.symlink?(@track.destination.path)
     end
 
     private
     def compress
-      PROGRESS_BAR.debug_log("compressing #{@track.source.path} to #{@track.destination.path}.")
+      PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
       cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
       system(cmd)

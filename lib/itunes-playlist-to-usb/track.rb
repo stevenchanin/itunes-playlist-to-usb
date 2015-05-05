@@ -44,14 +44,11 @@ module PL2USB
 
     def valid?
       unless source.exist?
-        PROGRESS_BAR.debug_log("#{id} has missing source file")
+        PROGRESS_BAR.debug_log("source file of '#{source.path}' is missing.")
         return false
       end
 
-      unless destination.exist?
-        PROGRESS_BAR.debug_log("#{id} has not been added to library")
-        return false
-      end
+      return false unless destination.exist?
 
       if (length - destination.length) > 1
         PROGRESS_BAR.debug_log("#{id} is #{destination.length} seconds instead of #{length} seconds.")
