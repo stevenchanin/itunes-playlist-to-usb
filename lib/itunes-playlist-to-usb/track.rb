@@ -1,5 +1,7 @@
 module PL2USB
   class Track
+    # A track from your playlist.
+
     require 'fileutils'
     require 'uri'
 

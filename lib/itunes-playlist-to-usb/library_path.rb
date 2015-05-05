@@ -1,8 +1,7 @@
 module PL2USB
   class LibraryPath
-    # Take a track object and return what would be entered into the library. If
-    # it's of a kind that the library doesn't support, then it will return the
-    # information of what should be created.
+    # This class takes a track object and return the details needed to add that
+    # track into the library.
 
     require 'unidecode'
 

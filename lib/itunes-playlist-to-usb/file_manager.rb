@@ -1,5 +1,8 @@
 module PL2USB
+  # TODO: rename class to maybe Library.
   class FileManager
+    # Methods to manage your library.
+
     def initialize playlist
       @playlist = playlist
     end
