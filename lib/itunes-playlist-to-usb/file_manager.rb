@@ -55,7 +55,8 @@ module PL2USB
       end
 
       # TODO: write a test for the gsub. It's a little bit magic.
-      # strip back to last directory boundary otherwise /abc and /acd would return /a instead of /
+      # strip back to last directory boundary otherwise /abc and /acd would
+      # return /a instead of /
       dir.gsub(/[^\/]+$/, '')
     end
   end
