@@ -53,7 +53,10 @@ module PL2USB
       @playlist.tracks.first.destination.path.split("").each do |l|
         dir += l if SETTINGS["library_path"].start_with?(dir + l)
       end
-      dir
+
+      # TODO: write a test for the gsub. It's a little bit magic.
+      # strip back to last directory boundary otherwise /abc and /acd would return /a instead of /
+      dir.gsub(/[^\/]+$/, '')
     end
   end
 end
