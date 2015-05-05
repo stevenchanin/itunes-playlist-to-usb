@@ -28,19 +28,15 @@ module PL2USB
     end
 
     def length
-      begin
-        ::AudioInfo.new(path).length
-      rescue
-        nil
-      end
+      ::AudioInfo.new(path).length
+    rescue
+      nil
     end
 
     def bitrate
-      begin
-        ::AudioInfo.new(path).bitrate
-      rescue
-        nil
-      end
+      ::AudioInfo.new(path).bitrate
+    rescue
+      nil
     end
 
     def basename
