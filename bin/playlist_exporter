@@ -12,8 +12,8 @@ class PlaylistExporter < Thor
 
     xml = File.read(SETTINGS["playlist"])
     @playlist = PL2USB::Playlist.new(xml)
-
-    PROGRESS_BAR.total = @playlist.tracks.count
+    @file_manager = PL2USB::FileManager.new(@playlist)
+    PROGRESS_BAR.total = @playlist.tracks.count + @file_manager.orphaned.count
 
     @playlist.tracks(:type=>"lossy").each do |track|
       track.save
@@ -24,6 +24,8 @@ class PlaylistExporter < Thor
       track.save
       PROGRESS_BAR.increment
     end
+
+    @file_manager.delete_orphaned!
   end
 
   desc "verify", "verify the files files in library are valid"
@@ -34,12 +36,18 @@ class PlaylistExporter < Thor
     PROGRESS_BAR.debug = options.debug?
 
     @playlist = PL2USB::Playlist.new(File.read(SETTINGS["playlist"]))
-    PROGRESS_BAR.total = @playlist.tracks.count
+    @file_manager = PL2USB::FileManager.new(@playlist)
+    PROGRESS_BAR.total = @playlist.tracks.count + @file_manager.orphaned.count
 
     # start with the tracks that don't need compressing.
     @playlist.tracks.each do |track|
       track.valid?
       PROGRESS_BAR.increment
+    end
+
+    # find orphaned files
+    @file_manager.orphaned.each do |orphan|
+      PROGRESS_BAR.debug_log("file '#{orphan}' doesn't belong in the library.")
     end
   end
 end
