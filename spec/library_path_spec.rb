@@ -62,4 +62,13 @@ RSpec.describe PL2USB::LibraryPath do
     end
   end
 
+  context "file with some weird charactors like '+or_.mp3" do
+    track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["246"])
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/library/%a/%A/%t')
+
+    it "should have a clean path" do
+      expect(library_path.path).to eql "/tmp/library/nwa/something_and_the_something_else/dont_break_a_abc"
+    end
+  end
+
 end
