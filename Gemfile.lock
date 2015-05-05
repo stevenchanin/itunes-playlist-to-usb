@@ -37,6 +37,7 @@ GEM
     ruby-ogginfo (0.7.2)
     ruby-progressbar (1.7.5)
     thor (0.19.1)
+    unidecode (1.0.0)
     wavefile (0.6.0)
 
 PLATFORMS
@@ -49,3 +50,4 @@ DEPENDENCIES
   ruby-audioinfo
   ruby-progressbar
   thor
+  unidecode

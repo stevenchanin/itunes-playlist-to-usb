@@ -4,6 +4,8 @@ module PL2USB
     # it's of a kind that the library doesn't support, then it will return the
     # information of what should be created.
 
+    require 'unidecode'
+
     def initialize track, settings={:library_path => nil}
       @track = track
       @library_path = settings[:library_path] || SETTINGS["library_path"]
@@ -44,6 +46,8 @@ module PL2USB
       input.to_s.downcase!
       input.gsub!(/[\.,']/, '')             # strip punctuation
       input.gsub!(/&/, 'and')               # expand &
+      input.gsub!(/ø/, 'o')                 # unicoder doesn't handle that well.
+      input = Unidecoder::decode(input)     # convert into ascii
       input.gsub!(/[^[:alnum:]\[\]]/, '_')  # replace non_alphanumeric
       input.gsub!(/_+/, '_')                # remove double underscores.
       input.gsub!(/^_?/, '')                # must not start with underscores

@@ -67,7 +67,7 @@ RSpec.describe PL2USB::LibraryPath do
     library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/library/%g/%a/%A/%t')
 
     it "should have a clean path" do
-      expect(library_path.path).to eql "/tmp/library/the_dø/nwa/something_and_the_something_else/dont_break_a_abc"
+      expect(library_path.path).to eql "/tmp/library/the_do/nwa/something_and_the_something_else/dont_break_oaea_a_abc"
     end
   end
 
