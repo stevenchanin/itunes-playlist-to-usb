@@ -49,22 +49,11 @@ module PL2USB
     end
 
     def library
-      # TODO: refactor
-      library_path = SETTINGS["library_path"].split("")
-      destination_path = @playlist.tracks.first.destination.path.split("")
-
-      dir = []
-      position = 0
-      library_path.each do |letter|
-        if destination_path[position] == letter
-          dir.push(letter)
-          position += 1
-        else
-          break
-        end
+      dir=""
+      @playlist.tracks.first.destination.path.split("").each do |l|
+        dir += l if SETTINGS["library_path"].start_with?(dir + l)
       end
-
-      dir.join
+      dir
     end
   end
 end
