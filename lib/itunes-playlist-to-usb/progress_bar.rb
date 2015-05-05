@@ -6,12 +6,8 @@ module PL2USB
     attr_reader   :verbose
 
     def initialize options={:verbose=>false, :debug=>false}
-      @debug = options[:debug] || false
-      @verbose = options[:verbose]
-      if verbose
-        @progress_bar ||= ::ProgressBar.create
-        @progress_bar.format = "%c of %C |%B| %P\%"
-      end
+      self.debug=options[:debug] || false
+      self.verbose=options[:verbose]
     end
 
     def verbose= v
