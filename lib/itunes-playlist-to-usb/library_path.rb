@@ -47,7 +47,7 @@ module PL2USB
       input.gsub!(/&/, 'and')               # expand &
       input.gsub!(/ø/, 'o')                 # unicoder doesn't handle that well
       input.gsub!(/Æ/, 'ae')                # unicoder doesn't handle that well
-      input = Unidecoder::decode(input)     # convert into ascii
+      input = Unidecoder.decode(input)      # convert into ascii
       input.gsub!(/[^[:alnum:]\[\]]/, '_')  # replace non_alphanumeric
       input.gsub!(/_+/, '_')                # remove double underscores
       input.gsub!(/^_?/, '')                # must not start with underscores
