@@ -47,14 +47,22 @@ module PL2USB
       ::File.symlink?(@track.destination.path)
     end
 
+    def compressor
+      return "ffmpeg" unless `which ffmpeg`.empty?
+      return "avconv" unless `which avconv`.empty?
+      return nil
+    end
+
     private
     def compress
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
-      if !`which ffmpeg`.empty?
+      if compressor == "ffmpeg"
         cmd = "ffmpeg -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
-      elsif !`which avconv`.empty?
+      elsif compressor == "avconv"
         cmd = "avconv -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
+      else
+        cmd = "false"
       end
       system(cmd)
       $?.success?
