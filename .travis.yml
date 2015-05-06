@@ -7,3 +7,4 @@ addons:
   apt:
     packages:
       - libav-tools
+      - libmp3lame0
