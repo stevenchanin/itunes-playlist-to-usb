@@ -48,6 +48,7 @@ module PL2USB
     end
 
     def compressor
+      ENV["PATH"]="/usr/local/bin:/usr/bin:/bin"
       return "ffmpeg" unless `which ffmpeg`.empty?
       return "avconv" unless `which avconv`.empty?
       return nil
