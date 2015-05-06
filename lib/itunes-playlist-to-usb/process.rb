@@ -52,6 +52,8 @@ module PL2USB
       return "ffmpeg" unless `which ffmpeg`.empty?
       return "avconv" unless `which avconv`.empty?
       return nil
+    rescue
+      raise "The command 'which' wasn't found."
     end
 
     private
