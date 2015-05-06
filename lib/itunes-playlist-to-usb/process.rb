@@ -51,7 +51,11 @@ module PL2USB
     def compress
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
-      cmd = "ffmpeg -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination} &> /dev/null"
+      if !`which ffmpeg`.empty?
+        cmd = "ffmpeg -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
+      elsif !`which avconv`.empty?
+        cmd = "avconv -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
+      end
       system(cmd)
       $?.success?
     rescue Interrupt => e
