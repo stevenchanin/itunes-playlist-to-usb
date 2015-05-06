@@ -17,12 +17,14 @@ module PL2USB
           ::File.unlink(@track.destination.path)
         end
 
-        if @track.convert?
-          compress
-        else
-          SETTINGS["symlink_for_copy"] ? symlink : copy
-        end
+        send(import_method)
       end
+    end
+
+    def import_method
+      return "compress" if @track.convert?
+      return "symlink" if SETTINGS["symlink_for_copy"]
+      return "copy"
     end
 
     def source
@@ -60,13 +62,7 @@ module PL2USB
     def compress
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
-      if compressor == "ffmpeg"
-        cmd = "ffmpeg -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
-      elsif compressor == "avconv"
-        cmd = "avconv -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
-      else
-        cmd = "false"
-      end
+      cmd = "#{compressor} -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
       system(cmd)
       $?.success?
     rescue Interrupt => e

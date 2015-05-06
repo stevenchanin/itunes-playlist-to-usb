@@ -7,6 +7,10 @@ RSpec.describe PL2USB::Process do
       expect(process.compressor).to be_a_kind_of String
     end
 
+    it "should symlink as the import method" do
+      expect(process.import_method).to eql "symlink"
+    end
+
     it "should copy" do
       expect(process.copy).to be true
       expect(::File.exist?(track.destination.path)).to be true
@@ -23,10 +27,14 @@ RSpec.describe PL2USB::Process do
 
   context "with an alac file" do
     track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["14605"])
-    convert = PL2USB::Process.new(track)
+    process = PL2USB::Process.new(track)
 
-    it "should be compress" do
-      expect(convert.process).to be true
+    it "should compress as the import method" do
+      expect(process.import_method).to eql "compress"
+    end
+
+    it "should compress" do
+      expect(process.process).to be true
       expect(::File.exist?(track.destination.path)).to be true
       ::FileUtils::rm_f(track.destination.path)
     end
