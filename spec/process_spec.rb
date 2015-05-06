@@ -4,7 +4,7 @@ RSpec.describe PL2USB::Process do
     process = PL2USB::Process.new(track)
 
     it "should find a compressor" do
-      expect(process.compressor).should_not be_nil
+      expect(process.compressor).to be_a_kind_of String
     end
 
     it "should copy" do
