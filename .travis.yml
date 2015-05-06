@@ -3,6 +3,7 @@ sudo: false
 rvm:
   - 2.2.1
 
-before_install:
-  - apt-get update -qq
-  - apt-get install -y libav-tools
+addons:
+  apt:
+    packages:
+      - libav-tools
