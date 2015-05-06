@@ -12,6 +12,7 @@ GEM
     moumar-wmainfo-rb (0.8)
     mp4info (1.7.3)
     plist (3.1.0)
+    rake (10.4.2)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -46,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   plist
+  rake
   rspec
   ruby-audioinfo
   ruby-progressbar
