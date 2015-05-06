@@ -51,7 +51,7 @@ module PL2USB
 
     def compressor
       ENV["PATH"]="/usr/local/bin:/usr/bin:/bin"
-      path = `which ffmpeg || which avconv`.strip
+      path = `which avconv || which ffmpeg`.strip
       return nil if path.empty?
       path
     rescue
@@ -62,7 +62,7 @@ module PL2USB
     def compress
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
-      cmd = "#{compressor} -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
+      cmd = "#{compressor} -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
       puts cmd
       system(cmd)
       $?.success?
