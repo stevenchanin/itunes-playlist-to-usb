@@ -51,9 +51,9 @@ module PL2USB
 
     def compressor
       ENV["PATH"]="/usr/local/bin:/usr/bin:/bin"
-      return "ffmpeg" unless `which ffmpeg`.empty?
-      return "avconv" unless `which avconv`.empty?
-      return nil
+      path = `which ffmpeg || which avconv`.strip
+      return nil if path.empty?
+      path
     rescue
       raise "The command 'which' wasn't found."
     end
@@ -63,6 +63,7 @@ module PL2USB
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")
       make_destination_directory
       cmd = "#{compressor} -v quiet -i #{source} -codec:v copy -codec:a #{codec} -q:a 2 #{destination}"
+      puts cmd
       system(cmd)
       $?.success?
     rescue Interrupt => e
