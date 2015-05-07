@@ -6,5 +6,5 @@ rvm:
 addons:
   apt:
     packages:
-      - libav-tools
-      - libmp3lame0
+      - ffmpeg
+      - libavcodec-extra-53
