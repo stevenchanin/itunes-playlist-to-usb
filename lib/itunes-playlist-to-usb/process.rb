@@ -58,6 +58,18 @@ module PL2USB
       raise "The command 'which' wasn't found."
     end
 
+    def encoders
+      `#{compressor} -codecs`.each_line.map do |l|
+        l[8..-1].split.first.gsub(/libmp3lame/, "mp3") if !!l.match(/^\s+.E/)
+      end.compact
+    end
+
+    def decoders
+      `#{compressor} -codecs`.each_line.map do |l|
+        l[8..-1].split.first if !!l.match(/^\s+D/)
+      end.compact
+    end
+
     private
     def compress
       PROGRESS_BAR.debug_log("compressing '#{@track.source.path}' to '#{@track.destination.path}'.")

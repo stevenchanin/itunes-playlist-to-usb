@@ -7,12 +7,16 @@ RSpec.describe PL2USB::Process do
       expect(process.compressor).to be_a_kind_of String
     end
 
-    it "should have the libmp3lame encoder" do
-      expect { system("#{process.compressor} -encoders") }.to output(/libmp3lame MP3 \(MPEG audio layer 3\)/).to_stdout_from_any_process
+    it "should be able to encode mp3s" do
+      expect(process.encoders).to include("mp3")
     end
 
-    it "should have the alac decoder" do
-      expect { system("#{process.compressor} -decoders") }.to output(/AAC \(Advanced Audio Coding\)/).to_stdout_from_any_process
+    it "should be able to decode alac" do
+      expect(process.decoders).to include("alac")
+    end
+
+    it "should be able to decode aac" do
+      expect(process.decoders).to include("aac")
     end
 
     it "should symlink as the import method" do
