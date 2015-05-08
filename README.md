@@ -1,3 +1,5 @@
+![Build Status Images](https://travis-ci.org/jonhiggs/itunes-playlist-to-usb.svg)
+
 # ITunes Playlist To USB
 
 ## The Problem
