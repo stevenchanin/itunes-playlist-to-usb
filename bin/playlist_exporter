@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+require 'thor'
+require File.join(File.dirname(__FILE__), "../lib/itunes-playlist-to-usb")
+
+class PlaylistExporter < Thor
+  desc "process", "process the playlist file"
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "hide the progress bar"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debugging"
+  def process
+    PROGRESS_BAR.verbose = !options.quiet?
+    PROGRESS_BAR.debug = options.debug?
+
+    xml = File.read(SETTINGS["playlist"])
+    @playlist = PL2USB::Playlist.new(xml)
+    @file_manager = PL2USB::FileManager.new(@playlist)
+    PROGRESS_BAR.total = @playlist.tracks.count + @file_manager.orphaned.count
+
+    @playlist.tracks(:type=>"lossy").each do |track|
+      track.save
+      PROGRESS_BAR.increment
+    end
+
+    @playlist.tracks(:type=>"lossless").each do |track|
+      track.save
+      PROGRESS_BAR.increment
+    end
+
+    @file_manager.delete_orphaned!
+  end
+
+  desc "verify", "verify the files files in library are valid"
+  method_option :quiet, :type => :boolean, :default => false, :aliases => "-q", :desc => "hide the progress bar"
+  method_option :debug, :type => :boolean, :default => false, :aliases => "-d", :desc => "enable debug mode."
+  def verify
+    PROGRESS_BAR.verbose = !options.quiet?
+    PROGRESS_BAR.debug = options.debug?
+
+    @playlist = PL2USB::Playlist.new(File.read(SETTINGS["playlist"]))
+    @file_manager = PL2USB::FileManager.new(@playlist)
+    PROGRESS_BAR.total = @playlist.tracks.count + @file_manager.orphaned.count
+
+    # start with the tracks that don't need compressing.
+    @playlist.tracks.each do |track|
+      track.valid?
+      PROGRESS_BAR.increment
+    end
+
+    # find orphaned files
+    @file_manager.orphaned.each do |orphan|
+      PROGRESS_BAR.debug_log("file '#{orphan}' doesn't belong in the library.")
+    end
+  end
+end
+
+begin
+  PlaylistExporter.start
+rescue
+  PROGRESS_BAR.log("Exiting...")
+  PROGRESS_BAR.clear if PROGRESS_BAR.verbose
+end
