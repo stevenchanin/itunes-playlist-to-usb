@@ -81,6 +81,5 @@ module PL2USB
       s && s.gsub(/\/|\(|\)/, '_')
       s.split.map(&:capitalize).join(" ")
     end
-
   end
 end
