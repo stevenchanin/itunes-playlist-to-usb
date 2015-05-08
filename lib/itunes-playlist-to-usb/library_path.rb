@@ -25,7 +25,7 @@ module PL2USB
       replacements.each do |key,replacement|
         p = p.gsub(/#{key}/, replacement.to_s)
       end
-      p
+      ::File.expand_path(p)
     end
 
     def file
@@ -42,6 +42,7 @@ module PL2USB
     end
 
     def clean input
+      return "" if input.nil?
       input.to_s.downcase!
       input.gsub!(/[\.,']/, '')             # strip punctuation
       input.gsub!(/&/, 'and')               # expand &

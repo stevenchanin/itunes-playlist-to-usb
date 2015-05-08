@@ -71,4 +71,13 @@ RSpec.describe PL2USB::LibraryPath do
     end
   end
 
+  context "file with a blank album" do
+    track = PL2USB::Track.new(Plist::parse_xml(PLAYLIST_XML)["Tracks"]["247"])
+    library_path = PL2USB::LibraryPath.new(track, :library_path=>'/tmp/library/%g/%a/%A/%t')
+
+    it "should have a clean path" do
+      expect(library_path.path).to eql "/tmp/library/genre/artist/name"
+    end
+  end
+
 end

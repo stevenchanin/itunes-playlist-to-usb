@@ -76,9 +76,7 @@ module PL2USB
 
     private
     def clean_string(s, cutoff_at = nil)
-      unless s.is_a?(String)
-        s = 'Blank'
-      end
+      return nil if !s.is_a?(String) || s.empty?
       s = s[0, cutoff_at] if cutoff_at
       s && s.gsub(/\/|\(|\)/, '_')
       s.split.map(&:capitalize).join(" ")
