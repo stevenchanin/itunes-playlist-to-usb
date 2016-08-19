@@ -89,6 +89,13 @@ class PlaylistExporter < Thor
     track_number = info["Track Number"] || 0
 
     begin
+      location = info["Location"]
+
+      if location.nil? || location.empty?
+        puts "** Error -- Song does not have a location on disk. Stored in Apple Music?"
+        return
+      end
+
       file_uri = URI(info["Location"])
 
       original_file = URI.decode(file_uri.path)
