@@ -110,8 +110,9 @@ class PlaylistExporter < Thor
       end
       target_name = ("%02d-"  % track_number) + "#{name}.#{file_type}"
       @catalog[genre][album] << {:name => target_name, :file => original_file}
-    rescue
+    rescue Exception => e
       puts "** Error trying to process:\n\t#{name}: #{info}"
+      puts "   Exception details: #{e}"
     end
   end
 
