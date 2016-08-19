@@ -55,9 +55,9 @@ so you end up with a final result like:
 ![Final Result](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/final_result.png)
 
 ### Protected Music
-As far as I can tell, .mp3 ("MPEG Audio File") and .m4a ("Purchased AAC audio file") export and play without problems.
+As far as I can tell, `.mp3` ("MPEG Audio File") and `.m4a` ("Purchased AAC audio file") export and play without problems.
 
-If your library contains protected (DRM) music, you can export it, but it won't play. In my experience, songs downloaded from Apple that have the "Kind" of "Protected AAC audio file" or "Apple Music AAC audio file" will not work.
+If your library contains protected (DRM) music, you can export it, but it won't play. In my experience, songs downloaded from Apple that have the "Kind" of "Protected AAC audio file" or "Apple Music AAC audio file" will not work. These seem to show up as `.m4p`.
 
 ### Options
 if you ask for help from playlist_exporter, it will show you the options it accepts:
