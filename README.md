@@ -1,7 +1,7 @@
 # ITunes Playlist To USB
 
 ## The Problem
-Lots of cars now have USB interfaces to allow you to bring music with you. Those are great because you can buy a USB stick for much lower $/GB ($20 for 64gb = $0.31/gb) than by getting the storage space as part of an iPod ($149 for 16gb = $9.31/gb).
+Lots of cars now have USB interfaces to allow you to bring music with you. Those are great because you can buy a USB stick for much lower $/GB ($15 for 64gb = $0.23/gb) than by getting the storage space as part of an iPod nano ($149 for 16gb = $9.31/gb) or iPod touch ($299 for 64gb = $4.67/gb).
 
 But I ran into a problem getting music copied over from my iTunes library onto the USB stick in a way that I could use it.
 
@@ -22,10 +22,10 @@ To use the playlist_exporter (this script), you:
 ![Save Export as XML file](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/iTunes_export_save.png)
 
 ### run playlist_exporter
-I tend to run ruby under RVM (https://rvm.io/) which installs bundler by default. If you don't have bundler installed, you will need to install it first
+I tend to run ruby under RVM (https://rvm.io/) which no longer installs bundler by default. If you don't have bundler installed, you will need to install it first
 
 ~~~~
-$ gem install bundler
+$ gem install bundler --no-ri --no-rdoc
 NOTE: you may need sudo to sudo the preceding command, depending on your installation directory and permissions
 ~~~~
 
@@ -54,11 +54,16 @@ and it will copy all the songs from the playlist onto the USB stick organized in
 so you end up with a final result like:
 ![Final Result](https://github.com/stevenchanin/itunes-playlist-to-usb/raw/master/doc/images/final_result.png)
 
+### Protected Music
+As far as I can tell, .mp3 ("MPEG Audio File") and .m4a ("Purchased AAC audio file") export and play without problems.
+
+If your library contains protected (DRM) music, you can export it, but it won't play. In my experience, songs downloaded from Apple that have the "Kind" of "Protected AAC audio file" or "Apple Music AAC audio file" will not work.
+
 ### Options
 if you ask for help from playlist_exporter, it will show you the options it accepts:
 
 ~~~~
-ruby playlist_exporter.rb help process 
+ruby playlist_exporter.rb help process
 
 Usage:
   playlist_exporter.rb process
